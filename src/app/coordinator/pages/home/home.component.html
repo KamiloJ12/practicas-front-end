@@ -1,0 +1,22 @@
+<div class="min-h-screen flex surface-ground">
+    
+    <div class="h-screen hidden lg:block absolute left-0 top-0 lg:static border-right-1 surface-border select-none bg-green-400">
+        <app-sidebar></app-sidebar>
+    </div>
+    
+    <div #avatar class="min-h-screen flex flex-column flex-auto">
+        <div class="flex justify-content-end align-items-center px-5 surface-0 border-bottom-1 surface-border relative lg:static py-1"> 
+            <ul class="list-none p-0 m-0 flex-row">
+                <li>
+                    <a pRipple (click)="menu.toggle($event)" class="flex p-2 border-round hover:surface-100 cursor-pointer transition-duration-150 transition-colors">
+                        <img src="https://blocks.primeng.org/assets/images/blocks/avatars/circle/avatar-f-1.png" 
+                        style="width: 32px; height: 32px;">
+                    </a>
+                </li>
+            </ul>
+            <p-menu #menu [model]="items" [popup]="true"></p-menu>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

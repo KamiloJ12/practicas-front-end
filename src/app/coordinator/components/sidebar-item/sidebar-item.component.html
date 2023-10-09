@@ -1,0 +1,29 @@
+
+<a *ngIf="!items" class="flex font-medium align-items-center cursor-pointer p-3 
+    text-700 border-round hover:surface-100">
+    <i class="pi {{ icon }} mr-2"></i>
+    {{ label }}
+</a>
+
+<a *ngIf="items" class="flex font-medium align-items-center 
+    justify-content-between cursor-pointer p-3 text-700 border-round hover:surface-100"
+    (click)="toggleList()">
+    <div>
+        <i class="pi {{ icon }} mr-2"></i>
+        {{ label }}
+    </div>
+    <i class="pi pi-angle-down"></i>
+</a>
+<ul class="list-none py-0 pl-3 pr-0 m-0 overflow-y-hidden transition-duration-400 transition-ease-in-out"
+    [@entradaSalidaAnimation]="listAnimationSlidedown ? 'slidedown' : 'slideup'"
+    (@entradaSalidaAnimation.done)="onAnimationDone()"
+    [ngClass]="{'hidden': !listVisible, 'block': listVisible}"
+>
+    <li *ngFor="let item of items">
+        <a class="flex font-medium align-items-center cursor-pointer p-3 text-700 border-round 
+            hover:surface-100">
+            <i class="pi {{ item.icon }} mr-2"></i>
+            {{ item.label }}
+        </a>
+    </li>
+</ul>

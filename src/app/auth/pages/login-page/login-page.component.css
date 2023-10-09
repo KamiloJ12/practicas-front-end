@@ -1,0 +1,20 @@
+/*
+form {
+    width: 400px;
+    background-color: aqua;
+}
+*/
+
+::ng-deep .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--red-400);
+    background: var(--red-400);
+}
+
+::ng-deep .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+    border-color: var(--red-300);
+}
+
+::ng-deep .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+    box-shadow: 0 0 0 0.2rem var(--red-200);
+    border-color: var(--red-200);
+}

@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { isAuthenticatedGuard, isNotAuthenticatedGuard } from './auth/guards';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'auth',
+    canActivate: [ isNotAuthenticatedGuard ],
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  },
+  {
+    path: 'coordinator',
+    canActivate: [ isAuthenticatedGuard ],
+    loadChildren: () => import('./coordinator/coordinator.module').then(m => m.CoordinatorModule),
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
