@@ -28,7 +28,7 @@ export class AuthService {
         return true;
     }
 
-    login( email: string, password: string): Observable<boolean> {
+    login( email: string, password: string ): Observable<boolean> {
         const url = `${this.baseUrl}/auth/login`;
         const body = { email, password };
 
@@ -42,7 +42,7 @@ export class AuthService {
     checkAuthStatus(): Observable<boolean> {
         const url = `${ this.baseUrl }/auth/check-token`;
         const token = localStorage.getItem('token');
-
+        
         if( !token ) {
             this.logout();
             return of(false);
@@ -58,6 +58,28 @@ export class AuthService {
                     this._authStatus.set( AuthStatus.notAuthenticated );
                     return of(false);
                 })
+            );
+    }
+
+    register( email: string, password: string ): Observable<boolean> {
+        const url = `${this.baseUrl}/auth/signup`;
+        const body = { email, password };
+
+        return  this.http.post<LoginResponse>(url, body)
+            .pipe(
+                map( ({ user, access_token }) => this.setAuthentication( user, access_token )),
+                catchError( err => throwError( () => err.error.message ))
+            );
+    }
+
+    requestResetPassword( email: string ): Observable<boolean> {
+        const url = `${this.baseUrl}/auth/request-password-reset`;
+        const body = { email };
+
+        return  this.http.post<LoginResponse>(url, body)
+            .pipe(
+                map( () => true ),
+                catchError( err => throwError( () => err.error.message ))
             );
     }
 

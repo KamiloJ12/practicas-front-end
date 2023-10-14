@@ -51,6 +51,11 @@ export class ErrorLabelDirective {
             return;
         }
 
+        if (errors.includes('notEqual')) {
+            this.htmlElement.nativeElement.innerText = 'Las contraseñas deben ser iguales.';
+            return;
+        }
+
     }
 
 

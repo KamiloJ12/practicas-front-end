@@ -7,44 +7,37 @@ import { AuthService } from '../../services/auth.service';
 import { ValidatorsService } from '../../../shared/services/validators.service';
 
 @Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.css'],
+  selector: 'app-request-reset-password-page',
+  templateUrl: './request-reset-password-page.component.html',
+  styleUrls: ['./request-reset-password-page.component.css'],
   providers: [MessageService],
 })
-export class RegisterPageComponent {
-
+export class RequestResetPasswordPageComponent {
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
   private router = inject( Router );
   private messageService = inject( MessageService );
   private validatorsService = inject( ValidatorsService );
 
-  public registerForm: FormGroup = this.fb.group({
+  public resetPasswordForm: FormGroup = this.fb.group({
     email: ['', [ Validators.required, Validators.pattern( this.validatorsService.emailPattern ) ]],
-    password: ['', [ Validators.required, Validators.minLength(6) ]],
-    password2: ['', [ Validators.required ]]
-  }, {
-    validators: [
-      this.validatorsService.isFieldOneEqualFieldTwo('password','password2')
-    ]
   });
 
   isValidField( field: string ) {
-    return this.validatorsService.isValidField( this.registerForm, field );
+    return this.validatorsService.isValidField( this.resetPasswordForm, field );
   }
 
-  login() {
-    if( !this.registerForm.valid ) 
-      return this.registerForm.markAllAsTouched();
+  requestResetPassword() {
+    if( !this.resetPasswordForm.valid ) 
+      return this.resetPasswordForm.markAllAsTouched();
 
-    const { email, password } = this.registerForm.value;
-    this.authService.register( email, password )
+    const { email } = this.resetPasswordForm.value;
+    this.authService.requestResetPassword( email )
       .subscribe({
         next: () => this.router.navigateByUrl('/coordinator/'),
         error: (error) => this.messageService.add({
           severity: 'error',
-          detail: 'Ocurrio un error al intentar realizar el registro',
+          detail: 'Ocurrio un error al intentar recuperar la contraseña',
           life: 3000
         })
       });
