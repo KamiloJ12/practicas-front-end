@@ -2,18 +2,12 @@
 
 <div class="min-h-screen overflow-hidden">
 
-    <div class="circulo bg-red-600 hidden lg:block"></div>
-
     <nav class="p-4 pb-3 flex justify-content-between">
-        <div class="flex align-items-center font-semibold text-900 text-xl">
-            <img src="https://ww2.ufps.edu.co/public/archivos/elementos_corporativos/logoufps.png" class="mr-2"
-                width="35">
-            Practicas
-        </div>
+        <app-logo></app-logo>
     </nav>
 
-    <div class="flex flex-wrap justify-content-center fadein  animation-duration-1000">
-        <div class="flex flex-column w-full lg:w-5 px-7">
+    <div class="flex justify-content-center">
+        <div class="flex flex-column w-full lg:w-5 px-7 fadein animation-duration-1000">
             <h1 class="text-5xl font-medium text-900 text-center mb-6">Registrarse</h1>
             <form [formGroup]="registerForm" (ngSubmit)="login()">
                 <div class="flex flex-column gap-2 mb-3">

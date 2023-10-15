@@ -7,6 +7,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarItemsComponent } from './components/sidebar-items/sidebar-items.component';
 import { SidebarItemComponent } from './components/sidebar-item/sidebar-item.component';
 import { StudentsComponent } from './pages/students/students.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StudentsComponent } from './pages/students/students.component';
   imports: [
     CommonModule,
     CoordinatorRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    SharedModule
   ]
 })
 export class CoordinatorModule { }

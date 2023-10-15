@@ -1,9 +1,0 @@
-.circulo {
-    border-radius: 0 0 0 100%;
-    width: 350px;
-    aspect-ratio: 1;
-    position: absolute;
-    z-index: -1;
-    right: 0;
-    top: 0;
-}
