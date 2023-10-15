@@ -9,17 +9,16 @@ import { UnverifiedEmailPageComponent } from './pages/unverified-email-page/unve
 import { VerifyEmailPageComponent } from './pages/verify-email-page/verify-email-page.component';
 
 const routes: Routes = [
-
   {
     path: '',
     children: [
       { path: 'login', component: LoginPageComponent },
       { path: 'register', component: RegisterPageComponent },
       { path: 'request-reset-password', component: RequestResetPasswordPageComponent },
-      { path: 'reset-password', component: ResetPasswordPageComponent },
+      { path: 'reset-password/:token', component: ResetPasswordPageComponent },
       { path: 'unverified-email', component: UnverifiedEmailPageComponent},
       { path: 'verify-email', component: VerifyEmailPageComponent },
-      { path: '**', redirectTo: 'login'}
+      { path: '**', redirectTo: 'register'}
     ]
   }
 

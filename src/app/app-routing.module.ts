@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'coordinator',
     canActivate: [ isAuthenticatedGuard ],
     loadChildren: () => import('./coordinator/coordinator.module').then(m => m.CoordinatorModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'auth'
   }
 ];
 

@@ -9,8 +9,13 @@ export const isNotAuthenticatedGuard: CanActivateFn = (route, state) => {
   const router = inject( Router );
   
   if( authService.authStatus() === AuthStatus.authenticated ){ 
+    console.log(false);
     router.navigateByUrl('/coordinator');
     return false;
   }
+
+  const url = state.url;
+  console.log( url );
+  console.log(true);
   return true;
 };
