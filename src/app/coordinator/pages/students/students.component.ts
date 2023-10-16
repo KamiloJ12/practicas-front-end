@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { StudentsService } from '../../../student/services/students.service';
 
 @Component({
   selector: 'app-students',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent {
+
+  private studentsService = inject(StudentsService);
+  public students: any[] = [];
+  
   products = [
     {
       id: '1000',
@@ -20,4 +25,11 @@ export class StudentsComponent {
       rating: 5
     },
   ]
+
+  ngOnInit(): void {
+    this.studentsService.getStudents()
+      .subscribe(students => this.students = students,
+      );
+    console.log(this.students);
+  }
 }

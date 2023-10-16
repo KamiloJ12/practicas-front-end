@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
+import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DividerModule } from 'primeng/divider';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
 import { PasswordModule } from 'primeng/password';
@@ -17,11 +20,14 @@ import { ToastModule } from 'primeng/toast';
   declarations: [],
   imports: [],
   exports: [
+    AutoCompleteModule,
     ButtonModule,
     CarouselModule,
+    CalendarModule,
     CardModule,
     CheckboxModule,
     DividerModule,
+    InputNumberModule,
     InputTextModule,
     MenuModule,
     PasswordModule,

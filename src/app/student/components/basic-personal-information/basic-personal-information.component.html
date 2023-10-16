@@ -1,0 +1,76 @@
+<h1 class="mb-6">Informacion Personal</h1>
+
+<form [formGroup]="basicPersonalForm" (ngSubmit)="submitForm()">
+    <div class="formgrid grid">
+        <div class="field col-12 md:col-6">
+            <label for="firstName">Nombre</label>
+            <input pInputText
+                   id="firstName" 
+                   type="text"
+                   class="w-full p-inputtext-sm" 
+                   formControlName="firstName"/>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="lastName">Apellidos</label>
+            <input pInputText
+                   id="lastName" 
+                   type="text"
+                   class="w-full p-inputtext-sm" 
+                   formControlName="lastName"/>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="birthdate">Fecha de nacimiento</label>
+            <p-calendar styleClass="w-full p-inputtext-sm"
+                        dateFormat="dd/mm/yy"
+                        formControlName="birthdate">
+            </p-calendar>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="phoneNumber">Telefono</label>
+            <p-inputNumber inputId="integeronly"
+                           id="phoneNumber"
+                           class="w-full"
+                           styleClass="w-full p-inputtext-sm" 
+                           formControlName="phoneNumber"/>
+        </div>
+        <div class="field col-12">
+            <label for="address">Direccion</label>
+            <input pInputText
+                   id="address" 
+                   type="text"
+                   class="w-full p-inputtext-sm" 
+                   formControlName="address"/>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="residenceDepartament">Departamento de residencia</label>
+            <p-autoComplete inputStyleClass="w-full p-inputtext-sm"
+                            styleClass="w-full p-inputtext-sm"
+                            [forceSelection]="true"
+                            [suggestions]="filteredMunicipalities" 
+                            (completeMethod)="filterMunicipality($event)" 
+                            field="name"
+                            formControlName="residenceDepartament"
+                            >
+            </p-autoComplete>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="residenceMunicipality">Municipio de residencia</label>
+            <p-autoComplete inputStyleClass="w-full p-inputtext-sm"
+                            styleClass="w-full p-inputtext-sm"
+                            [forceSelection]="true"
+                            [suggestions]="filteredMunicipalities" 
+                            (completeMethod)="filterMunicipality($event)" 
+                            field="name"
+                            formControlName="residenceMunicipality"
+                            >
+            </p-autoComplete>
+        </div>
+        <div class="flex justify-content-end w-full">
+            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+        </div>
+    </div>
+</form>
+
+<ul>
+    <li>Sexo</li>
+</ul>
