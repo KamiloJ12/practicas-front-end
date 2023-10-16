@@ -1,9 +1,15 @@
 <div class="flex min-w-screen min-h-screen">
-    <div class="bg-red-600 opacity-80 w-4 min-h-screen">
-
+    <div class="bg-red-600 opacity-80 text-0 px-6 py-6 w-4 min-h-screen">
+        <h2>Paso 1</h2>
+        <div class="text-sm">
+            Registra tu información personal
+        </div>
+        <div>
+            <app-navigation-form-steps></app-navigation-form-steps>
+        </div>
     </div>
-    <div class="p-8 w-full">
-        <app-basic-personal-information></app-basic-personal-information>
+    <div class="px-8 py-5 w-full">
+        <router-outlet></router-outlet>
         <ul>
             <li>Tipo de documento</li>
             <li>Numer de documento</li>

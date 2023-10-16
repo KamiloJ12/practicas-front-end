@@ -2,6 +2,31 @@
 
 <form [formGroup]="basicPersonalForm" (ngSubmit)="submitForm()">
     <div class="formgrid grid">
+        <div class="field col-12">
+            <label>Genero</label>
+            <div class="flex flex-wrap gap-3">    
+                <label class="border-round w-full md:w-4 border-1 border-red-200  
+                              hover:bg-red-200 cursor-pointer px-3 py-3 block"
+                       [ngClass]="{'bg-red-200': basicPersonalInfo.gender == 'Masculino'}">
+                    <input type="radio" 
+                           class="mr-4" 
+                           name="gender" 
+                           value="Masculino" 
+                           formControlName="gender">
+                    Masculino
+                </label>
+                <label class="border-round w-full md:w-4 border-1 border-red-200 
+                              hover:bg-red-200 cursor-pointer px-3 py-3 block"
+                       [ngClass]="{'bg-red-200': basicPersonalInfo.gender == 'Femenino'}">
+                    <input type="radio" 
+                           class="mr-4" 
+                           name="gender" 
+                           value="Femenino" 
+                           formControlName="gender">
+                    Femenino
+                </label>
+            </div>
+        </div>
         <div class="field col-12 md:col-6">
             <label for="firstName">Nombre</label>
             <input pInputText
@@ -9,6 +34,11 @@
                    type="text"
                    class="w-full p-inputtext-sm" 
                    formControlName="firstName"/>
+            <small *ngIf="isValidField('firstName')" 
+                   errorLabel
+                   [errors]="basicPersonalForm.get('firstName')?.errors" 
+                   class="p-error select-none">
+            </small>
         </div>
         <div class="field col-12 md:col-6">
             <label for="lastName">Apellidos</label>
@@ -17,6 +47,11 @@
                    type="text"
                    class="w-full p-inputtext-sm" 
                    formControlName="lastName"/>
+            <small *ngIf="isValidField('lastName')" 
+                   errorLabel
+                   [errors]="basicPersonalForm.get('lastName')?.errors" 
+                   class="p-error select-none">
+            </small>
         </div>
         <div class="field col-12 md:col-6">
             <label for="birthdate">Fecha de nacimiento</label>
@@ -24,6 +59,11 @@
                         dateFormat="dd/mm/yy"
                         formControlName="birthdate">
             </p-calendar>
+            <small *ngIf="isValidField('birthdate')" 
+                   errorLabel
+                   [errors]="basicPersonalForm.get('birthdate')?.errors" 
+                   class="p-error select-none">
+            </small>
         </div>
         <div class="field col-12 md:col-6">
             <label for="phoneNumber">Telefono</label>
@@ -32,6 +72,11 @@
                            class="w-full"
                            styleClass="w-full p-inputtext-sm" 
                            formControlName="phoneNumber"/>
+            <small *ngIf="isValidField('birthdate')" 
+                    errorLabel
+                    [errors]="basicPersonalForm.get('birthdate')?.errors" 
+                    class="p-error select-none">
+            </small>
         </div>
         <div class="field col-12">
             <label for="address">Direccion</label>
@@ -40,18 +85,28 @@
                    type="text"
                    class="w-full p-inputtext-sm" 
                    formControlName="address"/>
+            <small *ngIf="isValidField('address')" 
+                   errorLabel
+                   [errors]="basicPersonalForm.get('address')?.errors" 
+                   class="p-error select-none">
+           </small>
         </div>
         <div class="field col-12 md:col-6">
             <label for="residenceDepartament">Departamento de residencia</label>
             <p-autoComplete inputStyleClass="w-full p-inputtext-sm"
                             styleClass="w-full p-inputtext-sm"
                             [forceSelection]="true"
-                            [suggestions]="filteredMunicipalities" 
-                            (completeMethod)="filterMunicipality($event)" 
+                            [suggestions]="filteredDepartments" 
+                            (completeMethod)="filterDepartament($event)" 
                             field="name"
                             formControlName="residenceDepartament"
                             >
             </p-autoComplete>
+            <small *ngIf="isValidField('residenceDepartament')" 
+                   errorLabel
+                   [errors]="basicPersonalForm.get('residenceDepartament')?.errors" 
+                   class="p-error select-none">
+            </small>
         </div>
         <div class="field col-12 md:col-6">
             <label for="residenceMunicipality">Municipio de residencia</label>
@@ -64,13 +119,14 @@
                             formControlName="residenceMunicipality"
                             >
             </p-autoComplete>
-        </div>
-        <div class="flex justify-content-end w-full">
-            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+            <small *ngIf="isValidField('residenceMunicipality')" 
+                   errorLabel
+                   [errors]="basicPersonalForm.get('residenceMunicipality')?.errors" 
+                   class="p-error select-none">
+            </small>
         </div>
     </div>
+    <div class="flex justify-content-end w-full px-1">
+        <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+    </div>
 </form>
-
-<ul>
-    <li>Sexo</li>
-</ul>
