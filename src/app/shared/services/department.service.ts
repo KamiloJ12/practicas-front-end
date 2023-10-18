@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { environments } from 'src/environments/environments';
+import { environments } from '../../../environments/environments';
 import { Department } from '../interfaces/department.interface';
 
 @Injectable({
