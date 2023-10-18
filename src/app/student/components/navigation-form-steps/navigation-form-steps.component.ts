@@ -7,34 +7,42 @@ import { Component } from '@angular/core';
 })
 export class NavigationFormStepsComponent {
 
+  public currentIndex: number = 0;
   public stepsForm = [
     {
       link: '/student/register/basic-information',
-      label: 'Información Personal'
+      label: 'Información Personal',
+      message: 'Registra tu información personal'
     },
     {
       link: '/student/register/identity-information',
-      label: 'Información de identidad'
+      label: 'Información de identidad',
+      message: 'Registra la información relacionada con tu documento de identidad'
     },
     {
       link: '/student/register/academic-information',
-      label: 'Información academica'
+      label: 'Información academica',
+      message: 'Registra tu información acádemica'
     },
     {
       link: '/student/register/medical-information',
-      label: 'Información medica'
+      label: 'Información medica',
+      message: 'Registra tu información médica'
     },
     {
       link: '/student/register/preferences',
-      label: 'preferencias'
+      label: 'preferencias',
+      message: 'Selecciona tus preferencias'
     },
     {
       link: '/student/register/programming-languages',
-      label: 'Lenguajes de programación'
+      label: 'Lenguajes de programación',
+      message: 'Selecciona los lenguajes de programación de los que tengas conocimientos'
     },
     {
       link: '/student/register/frameworks',
-      label: 'Frameworks'
+      label: 'Frameworks',
+      message: 'Selecciona los frameworks de los que tengas conocimientos'
     }
   ];
 

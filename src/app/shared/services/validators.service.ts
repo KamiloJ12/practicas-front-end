@@ -29,5 +29,16 @@ export class ValidatorsService {
 
   }
 
+  public validatePdfFileType(control: FormGroup): { [key: string]: any } | null {
+    const file = control.value;
+    if (file) {
+      const allowedMimeTypes = ['application/pdf'];
+      if (!allowedMimeTypes.includes(file.type)) {
+        return { 'invalidFileType': true };
+      }
+    }
+    return null;
+  }
+
 
 }

@@ -7,6 +7,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
@@ -15,6 +16,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [],
@@ -27,6 +29,7 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     CheckboxModule,
     DividerModule,
+    DropdownModule,
     InputNumberModule,
     InputTextModule,
     MenuModule,

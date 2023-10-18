@@ -1,35 +1,14 @@
-<div class="flex min-w-screen min-h-screen">
-    <div class="bg-red-600 opacity-80 text-0 px-6 py-6 w-4 min-h-screen">
-        <h2>Paso 1</h2>
-        <div class="text-sm">
-            Registra tu información personal
-        </div>
-        <div>
-            <app-navigation-form-steps></app-navigation-form-steps>
-        </div>
+<div class="flex w-screen min-h-screen max-w-screen overflow-x-hidden">
+    <div class="bg-red-600 opacity-80 sticky text-0 px-6 py-5 min-h-screen overflow-x-hidden" style="width:450px">
+        <app-navigation-form-steps></app-navigation-form-steps>
     </div>
-    <div class="px-8 py-5 w-full">
+    <div class="px-8 py-5 w-full max-h-screen overflow-y-auto">
+
         <router-outlet></router-outlet>
         <ul>
-            <li>Tipo de documento</li>
-            <li>Numer de documento</li>
-            <li>Documento expedido en(ciudad):</li>
-            <li>Documento de identidad escaneado (PDF -Max. 1MB).</li>
-            <li>Primer Nombre</li>
-            <li>Segundo Nombre</li>
-            <li>Primer Apellido</li>
-            <li>Segundo Apellido</li>
-            <li>Fecha de nacimiento</li>
-            <li>Sexo</li>
-            <li>Direccion</li>
-            <li>Telefono</li> 
-            <li>Codigo</li>
-            <li>Horario de clase(PDF)</li>
-            <li>Departamento de residencia</li>
-            <li>Municipio de residencia</li>
+            <li *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+                {{ i }}
+            </li>
         </ul>
-        <form>
-
-        </form>
     </div>
 </div>

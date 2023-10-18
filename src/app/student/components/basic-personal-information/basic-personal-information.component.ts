@@ -62,5 +62,6 @@ export class BasicPersonalInformationComponent {
       return this.basicPersonalForm.markAllAsTouched();
     }
     this.formDataService.setFormData(this.basicPersonalForm.value);
+    this.router.navigateByUrl('/student/register/identity-information');
   }
 }

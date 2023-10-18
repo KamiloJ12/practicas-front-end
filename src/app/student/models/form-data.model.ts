@@ -10,5 +10,13 @@ export class FormData {
     residenceDepartament: Department | null = null; 
     residenceMunicipality: Municipality | null =  null;
     
-    //file: File | null = null; // Nuevo campo para el archivo
+    identityDocument: identityDocument | null = new identityDocument();
+}
+
+class identityDocument {
+    documentNumber: number = 0;
+    issuancePlace: Municipality | null = null;
+    issuanceDate: Date | null = null;
+    documentFile: File | null = null;
+    documentType: DocumentType | null = null;
 }

@@ -1,8 +1,11 @@
+<h2>Paso {{ currentIndex + 1 }}</h2>
+<div class="text-sm">
+    {{ stepsForm[currentIndex].message }}
+</div>
 <nav>
     <ul class="list-none p-0">
-        <li class="my-5 cursor-pointer" *ngFor="let stepForm of stepsForm; let i = index">
-            <a class="flex no-underline text-0 opacity-90 align-items-center gap-3"
-                [routerLink]="stepForm.link">
+        <li class="my-5 cursor-pointer" (click)="currentIndex = i" *ngFor="let stepForm of stepsForm; let i = index">
+            <a class="flex no-underline text-0 opacity-90 align-items-center gap-3" [routerLink]="stepForm.link">
                 <div class="flex justify-content-center 
                             align-items-center border-circle 
                             w-2rem h-2rem border-1 border-200 p-3">

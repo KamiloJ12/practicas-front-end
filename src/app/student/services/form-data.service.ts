@@ -10,7 +10,7 @@ export class FormDataService {
     return this.formData;
   }
 
-  setFormData(data: FormData): void {
+  setFormData(data: any): void {
     this.formData = { ...data };
   }
 

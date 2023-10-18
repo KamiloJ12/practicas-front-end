@@ -1,1 +1,95 @@
-avsdasdasd asdasdasd
+<!-- <h1 class="mb-6">Informacion de Identidad</h1>
+
+<form [formGroup]="identityForm" (ngSubmit)="submitForm()">
+    <div class="formgrid grid">
+        <div class="field col-12 md:col-6">
+            <label for="documentNumber">Numero de documento</label>
+            <p-inputNumber inputId="integeronly"
+                           id="documentNumber"
+                           [min]="0"
+                           class="w-full"
+                           styleClass="w-full p-inputtext-sm" 
+                           formControlName="documentNumber"/>
+            <small *ngIf="isValidField('documentNumber')" 
+                    errorLabel
+                    [errors]="identityForm.get('documentNumber')?.errors" 
+                    class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="documentType">Tipo de documentos</label>
+            <p-dropdown formControlName="documentType" 
+                        [options]="documentsType"
+                        id="documentType" 
+                        styleClass="w-full p-inputtext-sm"
+                        optionLabel="name">
+            </p-dropdown>
+            <small *ngIf="isValidField('documentType')" 
+                   errorLabel
+                   [errors]="identityForm.get('documentType')?.errors" 
+                   class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="issuanceDate">Fecha de expedicion</label>
+            <p-calendar styleClass="w-full p-inputtext-sm"
+                        id="issuanceDate"
+                        dateFormat="dd/mm/yy"
+                        formControlName="issuanceDate">
+            </p-calendar>
+            <small *ngIf="isValidField('issuanceDate')" 
+                   errorLabel
+                   [errors]="identityForm.get('issuanceDate')?.errors" 
+                   class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="issuancePlace">Lugar de expedicion</label>
+            <p-autoComplete inputStyleClass="w-full p-inputtext-sm"
+                            styleClass="w-full p-inputtext-sm"
+                            [forceSelection]="true"
+                            [suggestions]="filteredMunicipalities" 
+                            (completeMethod)="filterMunicipality($event)" 
+                            field="name"
+                            formControlName="issuancePlace"
+                            >
+            </p-autoComplete>
+            <small *ngIf="isValidField('issuancePlace')" 
+                   errorLabel
+                   [errors]="identityForm.get('issuancePlace')?.errors" 
+                   class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-8">
+            <label>Documento (archivo PDF):</label>
+            <div class="flex flex-column align-items-center justify-content-center cursor-pointer
+                        border-dashed border-1 border-500 border-round w-30rem h-16rem text-400"
+                 (drop)="onFileDrop($event)"
+                 (dragover)="onDragOver($event)"
+                 (click)="fileInput.click()">
+                <input #fileInput 
+                       type="file" 
+                       class="file-input"
+                       (change)="onFileSelected($event)" 
+                       hidden>
+                <div *ngIf="identityInfo.documentFile == null">
+                    <i class="pi pi-cloud-upload text-8xl"></i>
+                    Chose a file or drag it here
+                </div>
+                <div class="flex flex-column text-red-400 justify-content-center 
+                            align-items-center text-center" *ngIf="identityInfo.documentFile != null">
+                    <i class="pi pi-file-pdf text-8xl mb-4"></i>
+                    {{ identityInfo.documentFile.name }}
+                </div>
+            </div>
+            <small *ngIf="identityForm.get('documentFile')?.hasError('invalidFileType')" 
+                   class="p-error select-none">
+                   Solo se permiten archivos PDF.
+            </small>
+        </div>
+        <div class="field flex col-12 md:col-4 align-items-end justify-content-end">
+            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+        </div> 
+    </div>
+</form>
+ -->

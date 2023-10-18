@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: 'reset-password/:token', component: ResetPasswordPageComponent },
       { path: 'unverified-email', component: UnverifiedEmailPageComponent},
       { path: 'verify-email', component: VerifyEmailPageComponent },
-      { path: '**', redirectTo: 'register'}
+      { path: '**', redirectTo: 'login'}
     ]
   }
 
