@@ -13,9 +13,11 @@ export class AuthService {
 
     private _currentUser = signal<User | null>(null);
     private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+    private _emailStatus = signal<boolean>(false); 
 
     public currentUser = computed(() => this._currentUser());
     public authStatus = computed(() => this._authStatus());
+    public emailStatus = computed(() => this._emailStatus());
 
     constructor() {
         this.checkAuthStatus().subscribe();
@@ -24,6 +26,7 @@ export class AuthService {
     private setAuthentication(user: User, token: string): boolean {
         this._currentUser.set(user);
         this._authStatus.set(AuthStatus.authenticated);
+        this._emailStatus.set(user.isEmailConfirmed);
         localStorage.setItem('token', token);
         return true;
     }
