@@ -8,20 +8,15 @@ import { SharedModule } from '../shared/shared.module';
 
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { VerifyEmailPageComponent } from './pages/verify-email-page/verify-email-page.component';
-import { UnverifiedEmailPageComponent } from './pages/unverified-email-page/unverified-email-page.component';
 import { ResetPasswordPageComponent } from './pages/reset-password-page/reset-password-page.component';
 import { RequestResetPasswordPageComponent } from './pages/request-reset-password-page/request-reset-password-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 
 
 @NgModule({
   declarations: [
     RegisterPageComponent,
     LoginPageComponent,
-    VerifyEmailPageComponent,
-    UnverifiedEmailPageComponent,
     ResetPasswordPageComponent,
     RequestResetPasswordPageComponent,
     NavbarComponent

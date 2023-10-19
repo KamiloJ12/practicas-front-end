@@ -9,8 +9,6 @@ export const emailVerificationGuard: CanActivateFn = (route, state) => {
   if( authService.emailStatus() ){
     return true;
   }
-  const user = authService.currentUser();
-  authService.logout();
-  router.navigateByUrl(`/auth/unverified-email?email=${user?.email}`);
+  router.navigateByUrl(`/email-confirmation/unverified-email`);
   return false;
 };

@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
   },
   {
+    path: 'email-confirmation',
+    loadChildren: () => import('./email-confirmation/email-confirmation.module').then(m => m.EmailConfirmationModule),
+  },
+  {
     path: '**',
     redirectTo: 'auth'
   }
