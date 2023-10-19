@@ -1,11 +1,11 @@
 <p-toast></p-toast>
 
-<div class="min-h-screen overflow-hidden">
+<div class="min-h-screen overflow-hidden flex flex-column">
 
     <app-navbar></app-navbar>
 
-    <div class="flex justify-content-center">
-        <div class="flex flex-column w-full lg:w-5 px-7 fadein animation-duration-1000">
+    <div class="flex flex-grow-1 justify-content-center align-content-center">
+        <div class="flex flex-column h-full w-full lg:w-5 px-4 lg:px-7 fadein animation-duration-1000">
             <h1 class="text-5xl font-medium text-900 text-center mb-6">Registrarse</h1>
             <form [formGroup]="registerForm" (ngSubmit)="login()">
                 <div class="flex flex-column gap-2 mb-3">
