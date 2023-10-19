@@ -12,6 +12,7 @@ import { VerifyEmailPageComponent } from './pages/verify-email-page/verify-email
 import { UnverifiedEmailPageComponent } from './pages/unverified-email-page/unverified-email-page.component';
 import { ResetPasswordPageComponent } from './pages/reset-password-page/reset-password-page.component';
 import { RequestResetPasswordPageComponent } from './pages/request-reset-password-page/request-reset-password-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -22,7 +23,8 @@ import { RequestResetPasswordPageComponent } from './pages/request-reset-passwor
     VerifyEmailPageComponent,
     UnverifiedEmailPageComponent,
     ResetPasswordPageComponent,
-    RequestResetPasswordPageComponent
+    RequestResetPasswordPageComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

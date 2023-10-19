@@ -1,13 +1,11 @@
 <p-toast></p-toast>
 
-<div class="min-h-screen overflow-hidden">
-
-    <nav class="p-4 pb-3 flex justify-content-between">
-        <app-logo></app-logo>
-    </nav>
+<div class="min-h-screen overflow-hidden flex flex-column">
     
-    <div class="flex flex-wrap justify-content-center">
-        <div class="flex flex-column w-full lg:w-5 px-7 fadein animation-duration-1000">
+    <app-navbar></app-navbar>
+
+    <div class="flex flex-wrap flex-grow-1 justify-content-center align-content-center">
+        <div class="flex flex-column h-full w-full lg:w-5 px-4 lg:px-7 pb-7 fadein animation-duration-1000">
             <h1 class="text-5xl font-medium text-900 text-center mb-6">Iniciar sesión</h1>
     
             <form [formGroup]="loginForm" (ngSubmit)="login()">
