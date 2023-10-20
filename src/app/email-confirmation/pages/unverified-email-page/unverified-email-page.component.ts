@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { EmailConfirmationService } from '../../services/email-confirmation.service';
 
 @Component({
   selector: 'app-unverified-email-page',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./unverified-email-page.component.css']
 })
 export class UnverifiedEmailPageComponent {
+  private emailConfirmationService = inject( EmailConfirmationService );
 
+  sendVerificationLink() {
+    this.emailConfirmationService.resendConfirmationLink()
+      .subscribe();
+  }
 }

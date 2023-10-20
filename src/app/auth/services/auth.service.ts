@@ -45,12 +45,12 @@ export class AuthService {
     checkAuthStatus(): Observable<boolean> {
         const url = `${this.baseUrl}/auth/check-token`;
         const token = localStorage.getItem('token');
-
+        
         if (!token) {
             this.logout();
             return of(false);
         }
-
+        console.log('checkAuthStatus');
         const headers = new HttpHeaders()
             .set('Authorization', `Bearer ${token}`);
 

@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit {
         label: 'Options',
         items: [
             {
-                label: 'Update',
+                label: 'Cerrar sesion',
                 icon: 'pi pi-refresh',
                 command: () => {
+                  this.logout();
                     //this.update();
                 }
             },
@@ -66,6 +67,10 @@ export class HomeComponent implements OnInit {
             }
         ]
     }
-];
+  ];
+
+  logout() {
+    this.authService.logout();
+  }
 
 }
