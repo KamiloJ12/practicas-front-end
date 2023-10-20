@@ -6,12 +6,12 @@
     <div class="overflow-y-auto">
         <div class="p-3 m-0">
             
-            <app-sidebar-items label="Estudiantes" [items]="items"></app-sidebar-items>
+            <app-sidebar-items *ngFor="let item of items"  [label]="item.label" [items]="item.items"></app-sidebar-items>
 
-            <div class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer">
+            <!-- div class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer">
                 Empresas
                 <i class="pi pi-angle-down"></i>
-            </div>
+            </div -->
             
         </div>
     </div>

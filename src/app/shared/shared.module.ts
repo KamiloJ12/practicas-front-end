@@ -5,6 +5,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarItemComponent } from './components/sidebar-item/sidebar-item.component';
 import { SidebarItemsComponent } from './components/sidebar-items/sidebar-items.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SidebarItemsComponent } from './components/sidebar-items/sidebar-items.
     SidebarItemComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     ErrorLabelDirective,

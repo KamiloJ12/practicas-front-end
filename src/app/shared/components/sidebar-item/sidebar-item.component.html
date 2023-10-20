@@ -1,6 +1,7 @@
 
 <a *ngIf="!items" class="flex font-medium align-items-center cursor-pointer p-3 
-    text-700 border-round hover:surface-100">
+    text-700 border-round hover:surface-100"
+    [routerLink]="link">
     <i class="pi {{ icon }} mr-2"></i>
     {{ label }}
 </a>
@@ -21,7 +22,8 @@
 >
     <li *ngFor="let item of items">
         <a class="flex font-medium align-items-center cursor-pointer p-3 text-700 border-round 
-            hover:surface-100">
+            hover:surface-100"
+            [routerLink]="[item.link]">
             <i class="pi {{ item.icon }} mr-2"></i>
             {{ item.label }}
         </a>

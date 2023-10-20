@@ -23,6 +23,7 @@ export class SidebarItemComponent {
   @Input({ required: true }) label!: string;
   @Input({ required: true }) icon!: string;
   @Input() items?: any;
+  @Input() link?: string;
 
   listVisible = true;
   listAnimationSlidedown = true;
