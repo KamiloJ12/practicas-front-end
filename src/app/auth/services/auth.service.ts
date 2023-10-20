@@ -50,7 +50,6 @@ export class AuthService {
             this.logout();
             return of(false);
         }
-        console.log('checkAuthStatus');
         const headers = new HttpHeaders()
             .set('Authorization', `Bearer ${token}`);
 

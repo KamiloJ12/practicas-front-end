@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { environments } from 'src/environments/environments';
 
 @Injectable({
@@ -23,12 +23,16 @@ export class EmailConfirmationService {
     };
   }
 
-  /* confirm() {
-    const url = `${this.baseUrl}/email-confirmation`;
-    return this.http.get<Country[]>(url, this.commonOptions);
-  } */
+  confirm( token: string ): Observable<boolean> {
+    const url = `${this.baseUrl}/email-confirmation/confirm`;
+    return this.http.post<boolean>(url, { token } ,this.commonOptions)
+            .pipe(
+              map(() => true),
+              catchError(err => throwError(() => err.error.message))
+            );
+  }
 
-  resendConfirmationLink() {
+  resendConfirmationLink(): Observable<boolean> {
     const url = `${this.baseUrl}/email-confirmation/resend-confirmation-link`;
     return this.http.post(url, null, this.commonOptions)
             .pipe(

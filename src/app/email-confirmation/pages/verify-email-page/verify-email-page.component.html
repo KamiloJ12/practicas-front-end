@@ -1,3 +1,36 @@
+<p-toast></p-toast>
 
-<app-navbar></app-navbar>
-<h1>Email verificado</h1>
+<div class="min-h-screen overflow-hidden flex flex-column">
+    
+    <app-navbar></app-navbar>
+    
+    <div class="flex flex-grow-1 flex-column align-items-center md:flex-row min-h-full mb-3 p-3 md:p-8 md:pt-4 gap-2 md:gap-5 justify-content-center">
+        <div class="flex align-content-center p-5 justify-content-center">
+            <img src="../../../../assets/images/undraw_mail_sent_re_0ofv.svg" class="w-18rem md:w-22rem" >
+        </div>
+        <div class="flex flex-column align-items-center text-center justify-content-center">
+            <div *ngIf="status == 'successful'" class="email-verification-complete">
+                <h2 class="text-5xl">Verificación de Correo Electrónico Completa</h2>
+                <p class="text-500 px-2 md:px-6 mb-6">Tu correo electrónico ha sido verificado correctamente. Ahora puedes acceder a tu cuenta.</p>
+                
+                <p-button styleClass="p-button-danger " label="Iniciar sesión" [routerLink]="['/auth/login']"></p-button>
+            </div>
+            <div *ngIf="status == 'unsuccessful'" class="email-verification-error">
+                <h2 class="text-5xl">Error de Verificación de Correo Electrónico</h2>
+                <p class="text-500 px-2 md:px-6">Lo sentimos, no hemos podido verificar tu correo electrónico. Puede haber varias razones para esto.</p>
+                <ul class="text-500 px-2 md:px-6 mb-6 list-none">
+                  <li>El enlace de verificación ha caducado.</li>
+                  <li>El enlace de verificación es incorrecto.</li>
+                  <li>Hubo un problema técnico en el proceso de verificación.</li>
+                </ul>
+                <div>
+                    <p-button label="Reenviar email de verificación" 
+                              styleClass="p-button-danger "
+                              (onClick)="sendVerificationLink()">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

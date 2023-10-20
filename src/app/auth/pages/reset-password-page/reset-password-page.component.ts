@@ -33,6 +33,7 @@ export class ResetPasswordPageComponent {
     // Obtener el token de la URL
     this.token = this.route.snapshot.paramMap.get('token') ?? '';
   }
+  
   isValidField( field: string ) {
     return this.validatorsService.isValidField( this.resetPasswordForm, field );
   }
@@ -44,7 +45,7 @@ export class ResetPasswordPageComponent {
     const { password } = this.resetPasswordForm.value;
     this.authService.resetPassword(  password, this.token )
       .subscribe({
-        next: () => this.router.navigateByUrl('/coordinator/'),
+        next: () => this.router.navigateByUrl('/auth/login'),
         error: (error) => this.messageService.add({
           severity: 'error',
           detail: error,

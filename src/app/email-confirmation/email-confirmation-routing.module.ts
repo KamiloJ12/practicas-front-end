@@ -12,7 +12,8 @@ const routes: Routes = [
         canActivate: [ isAuthenticatedGuard ],  
         component: UnverifiedEmailPageComponent 
       },
-      { path: 'verify-email', component: VerifyEmailPageComponent },     
+      { path: 'verify-email/:token', component: VerifyEmailPageComponent },
+      { path: '**', redirectTo: 'unverified-email' }     
     ]
   }
 ];
