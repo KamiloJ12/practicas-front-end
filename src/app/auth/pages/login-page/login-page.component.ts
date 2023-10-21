@@ -15,8 +15,9 @@ import { ValidatorsService } from '../../../shared/services/validators.service';
 export class LoginPageComponent {
 
   private fb = inject( FormBuilder );
-  private authService = inject( AuthService );
   private router = inject( Router );
+
+  private authService = inject( AuthService );
   private messageService = inject( MessageService );
   private validatorsService = inject( ValidatorsService );
 
@@ -39,7 +40,6 @@ export class LoginPageComponent {
         next: () => this.router.navigateByUrl('/coordinator/'),
         error: (error) => this.messageService.add({
           severity: 'error',
-          summary: 'Error',
           detail: error,
           life: 3000
         })

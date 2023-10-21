@@ -29,17 +29,26 @@ export class CountryService {
     return this.http.get<CountryPagination>(url, this.commonOptions);
   }
 
-  getSuggestion( name: string ): Observable<Country[]> {
-    const url = `${this.baseUrl}/countries/suggestion?name=${name}`;
-    return this.http.get<Country[]>(url, this.commonOptions);
-  }
-
-  addCountry( country: Country ): Observable<boolean> {
-    const url = `${this.baseUrl}/countries`;
-    return this.http.post<Country>(url, country, this.commonOptions)
+  patchCountry( country: Country ): Observable<boolean> {
+    const url = `${this.baseUrl}/countries/${country.id}`;
+    return this.http.patch<boolean>(url, { name: country.name }, this.commonOptions)
       .pipe(
         map(() => true),
         catchError(err => throwError(() => err.error.message))
       );
+  }
+
+  addCountry( country: Country ): Observable<boolean> {
+    const url = `${this.baseUrl}/countries`;
+    return this.http.post<Country>(url, { name: country.name }, this.commonOptions)
+      .pipe(
+        map(() => true),
+        catchError(err => throwError(() => err.error.message))
+      );
+  }
+
+  findByName( name: string ): Observable<Country> {
+    const url = `${this.baseUrl}/countries/name/${name}`;
+    return this.http.get<Country>(url, this.commonOptions);
   }
 }

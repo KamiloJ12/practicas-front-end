@@ -6,6 +6,7 @@ import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -29,6 +30,7 @@ import { ToastModule } from 'primeng/toast';
     CalendarModule,
     CardModule,
     CheckboxModule,
+    DialogModule,
     DividerModule,
     DropdownModule,
     InputNumberModule,

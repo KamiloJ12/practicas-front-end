@@ -20,7 +20,7 @@ export class AppComponent {
     return true;
   });
 
-  /* public authStatusChangedEffect = effect(() => {
+  public authStatusChangedEffect = effect(() => {
     switch( this.authService.authStatus() ) {
       case AuthStatus.checking:
         return;
@@ -31,5 +31,5 @@ export class AppComponent {
         this.router.navigateByUrl('/auth/login');
         return;
     }
-  }); */
+  });
 }

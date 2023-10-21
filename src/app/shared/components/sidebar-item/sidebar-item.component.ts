@@ -20,10 +20,7 @@ import { Component, Input } from '@angular/core';
 })
 export class SidebarItemComponent {
 
-  @Input({ required: true }) label!: string;
-  @Input({ required: true }) icon!: string;
-  @Input() items?: any;
-  @Input() link?: string;
+  @Input() item?: any;
 
   listVisible = true;
   listAnimationSlidedown = true;

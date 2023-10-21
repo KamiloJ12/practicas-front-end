@@ -23,19 +23,24 @@ export class DepartmentService {
     };
   }
 
-  getDepartments(): Observable<Department[]> {
-    const url = `${this.baseUrl}/departments`;
-    return this.http.get<Department[]>(url, this.commonOptions);
-  }
-
-  getSuggestion( name: string, country: string = 'colombia' ): Observable<Department[]> {
-    const url = `${this.baseUrl}/departments/suggestion?name=${name}&country=${country}`;
+  getDepartments(offset?: number, limit?: number, country?: string,  query?: string): Observable<Department[]> {
+    const url = `${this.baseUrl}/departments?query=${query}&offset=${offset}&limit=${limit}&country=${country}`;
     return this.http.get<Department[]>(url, this.commonOptions);
   }
 
   addDepartment( department: Department ): Observable<boolean> {
     const url = `${this.baseUrl}/departments`;
-    return this.http.post<Department>(url, department, this.commonOptions)
+    const data = { name: department.name, country: department.country?.id };
+    return this.http.post<Department>(url, data, this.commonOptions)
+      .pipe(
+        map(() => true),
+        catchError(err => throwError(() => err.error.message))
+      );
+  }
+
+  pathDepartment( department: Department): Observable<boolean> {
+    const url = `${this.baseUrl}/departments/${department.id}`;
+    return this.http.patch<Department>(url, { name: department.name }, this.commonOptions)
       .pipe(
         map(() => true),
         catchError(err => throwError(() => err.error.message))

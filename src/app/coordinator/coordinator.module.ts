@@ -6,13 +6,15 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { StudentsComponent } from './pages/students/students.component';
 import { SharedModule } from '../shared/shared.module';
 import { CountriesPageComponent } from './pages/countries-page/countries-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DepartmentsPageComponent } from './pages/departments-page/departments-page.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     StudentsComponent,
     CountriesPageComponent,
+    DepartmentsPageComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     PrimeNgModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class CoordinatorModule { }

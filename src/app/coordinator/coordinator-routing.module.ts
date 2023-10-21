@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './pages/home/home.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { CountriesPageComponent } from './pages/countries-page/countries-page.component';
+import { DepartmentsPageComponent } from './pages/departments-page/departments-page.component';
 
 const routes: Routes = [
   {
@@ -11,7 +13,8 @@ const routes: Routes = [
     children: [
         { path: 'students', component: StudentsComponent },
         { path: 'countries', component: CountriesPageComponent },
-        { path: '**', redirectTo: 'students' },
+        { path: 'departments/:country', component: DepartmentsPageComponent },
+        { path: '**', redirectTo: 'departments/brasil' },
     ]
   }
 ];

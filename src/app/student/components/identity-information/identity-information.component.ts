@@ -57,8 +57,8 @@ export class IdentityInformationComponent {
 
   filterDepartament(event: AutoCompleteCompleteEvent) {
     const query = event.query;
-    this.departmentService.getSuggestion(query)
-      .subscribe( departments => this.filteredDepartments = departments ); 
+    // this.departmentService.getSuggestion(query)
+    //   .subscribe( departments => this.filteredDepartments = departments ); 
   }
 
   submitForm() {

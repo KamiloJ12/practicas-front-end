@@ -1,0 +1,10 @@
+<span class="p-input-icon-left w-full">
+    <i class="pi pi-search"></i>
+    <input type="text"
+           class="w-full p-inputtext-sm" 
+           [placeholder]="placeholder" 
+           pInputText
+           (keyup)="onKeyPress( txtInput.value )"
+           #txtInput 
+    />
+</span>

@@ -1,17 +1,17 @@
 
-<a *ngIf="!items" class="flex font-medium align-items-center cursor-pointer p-3 
-    text-700 border-round hover:surface-100"
-    [routerLink]="link">
-    <i class="pi {{ icon }} mr-2"></i>
-    {{ label }}
+<a *ngIf="!item.items" class="flex font-medium align-items-center cursor-pointer p-3 
+    text-700 border-round hover:surface-100 no-underline"
+    [routerLink]="item.link">
+    <i class="pi {{ item.icon }} mr-2"></i>
+    {{ item.label }}
 </a>
 
-<a *ngIf="items" class="flex font-medium align-items-center 
-    justify-content-between cursor-pointer p-3 text-700 border-round hover:surface-100"
+<a *ngIf="item.items" class="flex font-medium align-items-center 
+    justify-content-between no-underline cursor-pointer p-3 text-700 border-round hover:surface-100"
     (click)="toggleList()">
     <div>
-        <i class="pi {{ icon }} mr-2"></i>
-        {{ label }}
+        <i class="pi {{ item.icon }} mr-2"></i>
+        {{ item.label }}
     </div>
     <i class="pi pi-angle-down"></i>
 </a>
@@ -20,12 +20,12 @@
     (@entradaSalidaAnimation.done)="onAnimationDone()"
     [ngClass]="{'hidden': !listVisible, 'block': listVisible}"
 >
-    <li *ngFor="let item of items">
+    <li *ngFor="let subItem of item.items">
         <a class="flex font-medium align-items-center cursor-pointer p-3 text-700 border-round 
-            hover:surface-100"
-            [routerLink]="[item.link]">
-            <i class="pi {{ item.icon }} mr-2"></i>
-            {{ item.label }}
+            hover:surface-100 no-underline"
+            [routerLink]="[subItem.link]">
+            <i class="pi {{ subItem.icon }} mr-2"></i>
+            {{ subItem.label }}
         </a>
     </li>
 </ul>

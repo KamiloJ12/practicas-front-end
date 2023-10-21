@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="card px-8 py-4">
-    <h1>Paises</h1>
+    <h1>Departamentos</h1>
 
     <!-- Header -->
     <div class="flex justify-content-between align-items-start align-content-start vertical-align-middle mb-4 gap-3">    
@@ -9,20 +9,20 @@
         <app-search-box
             class="w-full"
             (onDebounce)="onSearch($event)"
-            placeholder="Buscar pais..."
+            placeholder="Buscar departamento..."
         ></app-search-box>
         
         <p-button (click)="onShowDialog()" label="Agregar" size="small" [outlined]="true"></p-button>
     </div>
 
     <!-- Table -->
-    <p-table [value]="countries"
+    <p-table [value]="departments"
              [lazy]="true"
-             (onLazyLoad)="loadCountries($event)"
+             (onLazyLoad)="loadDepartments($event)"
              [paginator]="true"
              [rows]="5"
              [showCurrentPageReport]="true"
-             currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} paises"
+             currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} departamentos"
              [totalRecords]="totalRecords"
         >
         <ng-template pTemplate="header">
@@ -43,7 +43,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="2" class="text-center py-5">No se encontraron paises.</td>
+                <td colspan="2" class="text-center py-5">No se encontraron departamentos.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="loading">
@@ -56,26 +56,26 @@
 
     <p-menu #menu [model]="items" [popup]="true"></p-menu>
 
-    <p-dialog header="Agregar Pais" 
+    <p-dialog header="Agregar Departamento" 
               [(visible)]="showDialog"
               [modal]="true"
               [breakpoints]="{ '960px': '75vw' }" 
               [style]="{ width: '40vw' }"
               contentStyleClass="px-6 pb-5 pt-2"
               styleClass="bg-blue-200">
-        <form [formGroup]="countryForm" (ngSubmit)="submit()">
+        <form [formGroup]="departmentForm" (ngSubmit)="submit()">
             <div class="flex flex-column gap-2 mb-4">
                 <label htmlFor="name" class="text-900">Nombre</label>
                 <input type="text" id="name" class="w-full" pInputText formControlName="name"/>
                 <small *ngIf="isValidField('name')" 
                         errorLabel
-                        [errors]="countryForm.get('name')?.errors" 
+                        [errors]="departmentForm.get('name')?.errors" 
                         class="p-error select-none">
                 </small>
             </div>
             <div class="flex justify-content-end">
-                <p-button *ngIf="!currentCountry?.id" type="submit" label="Agregar" size="small" [outlined]="true"></p-button>
-                <p-button *ngIf="currentCountry?.id" type="submit" label="Editar" size="small" [outlined]="true"></p-button>
+                <p-button *ngIf="!currentDepartment?.id" type="submit" label="Agregar" size="small" [outlined]="true"></p-button>
+                <p-button *ngIf="currentDepartment?.id" type="submit" label="Editar" size="small" [outlined]="true"></p-button>
             </div>
         </form>
     </p-dialog>

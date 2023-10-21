@@ -47,14 +47,14 @@ export class BasicPersonalInformationComponent {
   filterMunicipality(event: AutoCompleteCompleteEvent) {
     const query = event.query;
     const departament = this.basicPersonalForm.get('residenceDepartament')?.value.name;
-    this.munipalityService.getSuggestion(query, departament)
-      .subscribe( municipalities => this.filteredMunicipalities = municipalities ); 
+    // this.munipalityService.getSuggestion(query, departament)
+    //   .subscribe( municipalities => this.filteredMunicipalities = municipalities ); 
   }
 
   filterDepartament(event: AutoCompleteCompleteEvent) {
     const query = event.query;
-    this.departmentService.getSuggestion(query)
-      .subscribe( departments => this.filteredDepartments = departments ); 
+    // this.departmentService.getSuggestion(query)
+    //   .subscribe( departments => this.filteredDepartments = departments ); 
   }
 
   submitForm() {

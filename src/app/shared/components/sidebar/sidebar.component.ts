@@ -16,7 +16,7 @@ export class SidebarComponent {
       label: 'Estudiantes',
       items: [
         {
-          label: 'Estudiante',
+          label: 'Estudiantes',
           icon: 'pi-user'
         },
         {
@@ -24,7 +24,7 @@ export class SidebarComponent {
           icon: 'pi-chart-line',
           items: [
             {
-              label: 'Estudiante',
+              label: 'Estudiantes',
               icon: 'pi-user'
             },
           ]
@@ -37,19 +37,8 @@ export class SidebarComponent {
         {
           label: 'Paises',
           link: '/coordinator/countries',
-          icon: 'pi-user'
+          icon: 'pi-globe'
         },
-        {
-          label: 'Reportes',
-          icon: 'pi-chart-line',
-          items: [
-            {
-              label: 'Paises',
-              icon: 'pi-user',
-              link: '/coordinator/countries',
-            },
-          ]
-        }
       ]
     }
   ];

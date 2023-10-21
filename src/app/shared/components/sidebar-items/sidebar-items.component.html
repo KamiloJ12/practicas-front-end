@@ -10,7 +10,7 @@
         (@entradaSalidaAnimation.done)="onAnimationDone()"
         [ngClass]="{'hidden': !listVisible, 'block': listVisible}">
         <li *ngFor="let item of items">
-            <app-sidebar-item [label]="item.label" [icon]="item.icon" [items]="item.items"></app-sidebar-item>            
+            <app-sidebar-item [item]="item"></app-sidebar-item>            
         </li>
     </ul>
 </div>
