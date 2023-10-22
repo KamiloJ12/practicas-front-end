@@ -1,12 +1,14 @@
 import { Component, ViewChild, inject } from '@angular/core';
-
-import { TableLazyLoadEvent } from 'primeng/table';
-import { Country, CountryPagination } from 'src/app/shared/interfaces';
-import { CountryService } from '../../../shared/services/country.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { MenuItem, MessageService } from 'primeng/api';
-import { ValidatorsService } from 'src/app/shared/services';
 import { Menu } from 'primeng/menu';
+
+import { CountryService } from '../../../shared/services/country.service';
+import { ValidatorsService } from 'src/app/shared/services';
+
+import { Country } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-countries-page',
@@ -17,16 +19,14 @@ import { Menu } from 'primeng/menu';
 export class CountriesPageComponent {
 
   @ViewChild('menu', { static: false }) menu!: Menu;
-
+  
   public countries: Country[] = [];
-  public totalRecords: number = 0;
-
+  
   private countryService = inject(CountryService);
   private messageService = inject(MessageService);
   private validatorsService = inject(ValidatorsService);
+  private router = inject(Router);
 
-  public search: string = '';
-  public currentPage: number = 0;
   public loading = true;
   public showDialog = false;
   public selectCountry!: Country;
@@ -45,7 +45,7 @@ export class CountriesPageComponent {
   }
 
   ngOnInit(): void {
-    this.onSearch();
+    this.loadCountries();
 
     this.items = [
       {
@@ -58,29 +58,25 @@ export class CountriesPageComponent {
       },
       {
         label: 'Ver',
-        icon: 'pi pi-fw pi-eye'
+        icon: 'pi pi-fw pi-eye',
+        command: () => {
+          this.router.navigateByUrl(`/coordinator/departments/${this.selectCountry.name}`);
+        }
       }
     ]
   }
 
-  loadCountries(event: TableLazyLoadEvent) {
-    this.currentPage = event.first ? event.first : this.currentPage;
-    this.countryService.getCountries(event.first, event.rows ?? 5, this.search)
+  loadCountries() {
+    this.countryService.getCountries()
       .subscribe({
-        next: (countriesPagination: CountryPagination) => {
-          this.countries = countriesPagination.items;
-          this.totalRecords = countriesPagination.count;
+        next: ( countries: Country[] ) => {
+          this.countries = countries;
           this.loading = false;
         },
         error: (error) => {
           this.loading = false;
         }
       });
-  }
-
-  onSearch(value: string = '') {
-    this.search = value;
-    this.loadCountries({ first: 0, rows: 5 });
   }
 
   onShowMenu( event: Event, country: Country ) {
@@ -109,7 +105,7 @@ export class CountriesPageComponent {
           next: () => {
             this.showMessage('success', 'Se ha agregado un nuevo pais');
             this.countryForm.reset();
-            this.loadCountries({ first: this.currentPage });
+            this.loadCountries();
           },
           error: (error) => this.showMessage('error', error)
         });
@@ -119,7 +115,7 @@ export class CountriesPageComponent {
         next: () => {
           this.showMessage('success', 'Se ha actualizado el pais');
           this.countryForm.reset();
-          this.loadCountries({ first: this.currentPage });
+          this.loadCountries();
         },
         error: (error) => this.showMessage('error', error)
       });

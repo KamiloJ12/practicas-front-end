@@ -8,7 +8,7 @@
             
         <app-search-box
             class="w-full"
-            (onDebounce)="onSearch($event)"
+            (onDebounce)="table.filterGlobal($event, 'contains')"
             placeholder="Buscar pais..."
         ></app-search-box>
         
@@ -16,19 +16,25 @@
     </div>
 
     <!-- Table -->
-    <p-table [value]="countries"
-             [lazy]="true"
-             (onLazyLoad)="loadCountries($event)"
-             [paginator]="true"
+    <p-table #table
+             [value]="countries"
              [rows]="5"
              [showCurrentPageReport]="true"
+             [paginator]="true"
+             [loading]="loading"
              currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} paises"
-             [totalRecords]="totalRecords"
+             [globalFilterFields]="['name']"
         >
         <ng-template pTemplate="header">
             <tr>
-                <th style="width:20%">Id</th>
-                <th>Nombre</th>
+                <th pSortableColumn="id" style="width:20%">
+                    Id
+                    <p-sortIcon field="id"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name">
+                    Nombre
+                    <p-sortIcon field="name"></p-sortIcon>
+                </th>
                 <th style="width: 5%"></th>
             </tr>
         </ng-template>

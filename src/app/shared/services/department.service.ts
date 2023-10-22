@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { environments } from '../../../environments/environments';
 import { Department } from '../interfaces/department.interface';
+import { Country } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,9 @@ export class DepartmentService {
     return this.http.get<Department[]>(url, this.commonOptions);
   }
 
-  addDepartment( department: Department ): Observable<boolean> {
+  addDepartment( department: Department, country: Country ): Observable<boolean> {
     const url = `${this.baseUrl}/departments`;
-    const data = { name: department.name, country: department.country?.id };
+    const data = { name: department.name, country: country.id };
     return this.http.post<Department>(url, data, this.commonOptions)
       .pipe(
         map(() => true),

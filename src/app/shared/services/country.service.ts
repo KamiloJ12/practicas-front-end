@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
+
 import { environments } from '../../../environments/environments';
 import { Country } from '../interfaces/country.interface';
-import { CountryPagination } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +24,9 @@ export class CountryService {
     };
   }
 
-  getCountries(offset?: number, limit?: number, query?: string): Observable<CountryPagination> {
-    const url = `${this.baseUrl}/countries?query=${query}&offset=${offset}&limit=${limit}`;
-    return this.http.get<CountryPagination>(url, this.commonOptions);
+  getCountries(): Observable<Country[]> {
+    const url = `${this.baseUrl}/countries`;
+    return this.http.get<Country[]>(url, this.commonOptions);
   }
 
   patchCountry( country: Country ): Observable<boolean> {
@@ -47,8 +47,13 @@ export class CountryService {
       );
   }
 
-  findByName( name: string ): Observable<Country> {
+  findByName( name: string ): Observable<Country[]> {
     const url = `${this.baseUrl}/countries/name/${name}`;
+    return this.http.get<Country[]>(url, this.commonOptions);
+  }
+
+  findById( id: number ): Observable<Country> {
+    const url = `${this.baseUrl}/countries/${id}`;
     return this.http.get<Country>(url, this.commonOptions);
   }
 }
