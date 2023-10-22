@@ -22,7 +22,7 @@ export class SearchBoxComponent implements OnInit {
   ngOnInit(): void {
     this.debouncer
       .pipe(
-        debounceTime(300)
+        debounceTime(200)
       )
       .subscribe( value => {
         this.onDebounce.emit( value );

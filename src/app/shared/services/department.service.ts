@@ -24,8 +24,13 @@ export class DepartmentService {
     };
   }
 
-  getDepartments(offset?: number, limit?: number, country?: string,  query?: string): Observable<Department[]> {
-    const url = `${this.baseUrl}/departments?query=${query}&offset=${offset}&limit=${limit}&country=${country}`;
+  getDepartments(): Observable<Department[]> {
+    const url = `${this.baseUrl}/departments`;
+    return this.http.get<Department[]>(url, this.commonOptions);
+  }
+
+  findByName( name: string ): Observable<Department[]> {
+    const url = `${this.baseUrl}/departments/name/${name}`;
     return this.http.get<Department[]>(url, this.commonOptions);
   }
 

@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { environments } from '../../../environments/environments';
 import { Municipality } from '../interfaces/municipality.interfaces';
+import { Department } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +29,19 @@ export class MunicipalityService {
     return this.http.get<Municipality[]>(url, this.commonOptions);
   }
 
-  getSuggestion( name: string, departament: string = '' ): Observable<Municipality[]> {
-    const url = `${this.baseUrl}/municipalities/suggestion?name=${name}&department=${departament}`;
-    return this.http.get<Municipality[]>(url, this.commonOptions);
+  addMunicipality( municipality: Municipality, department: Department ): Observable<boolean> {
+    const url = `${this.baseUrl}/municipalities`;
+    const data = { name: municipality.name, department: department.name };
+    return this.http.post<Municipality>(url, data, this.commonOptions)
+      .pipe(
+        map(() => true),
+        catchError(err => throwError(() => err.error.message))
+      );
   }
 
-  addMunicipality( department: Municipality ): Observable<boolean> {
-    const url = `${this.baseUrl}/departments`;
-    return this.http.post<Municipality>(url, department, this.commonOptions)
+  pathMunicipality( municipality: Municipality ): Observable<boolean> {
+    const url = `${this.baseUrl}/municipalities/${municipality.id}`;
+    return this.http.patch<Department>(url, { name: municipality.name }, this.commonOptions)
       .pipe(
         map(() => true),
         catchError(err => throwError(() => err.error.message))

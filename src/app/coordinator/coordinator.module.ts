@@ -10,12 +10,14 @@ import { CountriesPageComponent } from './pages/countries-page/countries-page.co
 import { DepartmentsPageComponent } from './pages/departments-page/departments-page.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MunicipalitiesPageComponent } from './pages/municipalities-page/municipalities-page.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     CountriesPageComponent,
     DepartmentsPageComponent,
+    MunicipalitiesPageComponent,
   ],
   imports: [
     CommonModule,
