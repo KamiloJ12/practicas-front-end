@@ -40,7 +40,31 @@
         <div class="col-12 md:col-6 p-3">
             <div class="text-500 font-medium mb-2">Documento de identidad</div>
             <div class="text-900">{{ student.identityDocument.documentNumber }}</div>
-        </div>     
+        </div>
+        <div class="col-12 md:col-6 p-3">
+            <div class="text-500 font-medium mb-2">Departamento de residencia</div>
+            <div class="text-900">{{ student.residenceDepartament.name | capitalizeSentences }}</div>
+        </div>
+        <div class="col-12 md:col-6 p-3">
+            <div class="text-500 font-medium mb-2">Municipio de residencia</div>
+            <div class="text-900">{{ student.residenceMunicipality.name | capitalizeSentences }}</div>
+        </div>
+        <div class="col-12 md:col-6 p-3">
+            <div class="text-500 font-medium mb-2">Compañia prestadora de salud</div>
+            <div class="text-900">{{ student.healthCareCompanyEnrollment.healthCareCompany.name | capitalizeSentences }}</div>
+        </div> 
+        <div class="col-12 md:col-6 p-3">
+            <div class="text-500 font-medium mb-2">Tipo de afiliacion</div>
+            <div class="text-900">{{ student.healthCareCompanyEnrollment.affiliationType | capitalizeSentences }}</div>
+        </div> 
+        <div class="col-12 md:col-6 p-3">
+            <div class="text-500 font-medium mb-2">Fecha de afiliación</div>
+            <div class="text-900">{{ student.healthCareCompanyEnrollment.affiliationDate | date: 'd MMMM, y' }}</div>
+        </div> 
+        <div class="col-12 md:col-6 p-3">
+            <div class="text-500 font-medium mb-2">Municipio de residencia</div>
+            <div class="text-900">{{ student.residenceMunicipality.name }}</div>
+        </div>        
     </div>  
 </div>
 

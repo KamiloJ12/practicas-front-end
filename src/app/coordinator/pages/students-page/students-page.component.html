@@ -49,11 +49,14 @@
         </ng-template>
         <ng-template pTemplate="body" let-student>
             <tr>
-                <td>{{ student.id }}</td>
+                <td>{{ student.studentCode }}</td>
                 <td>{{ student.firstName | capitalizeSentences }}</td>
                 <td>{{ student.lastName | capitalizeSentences }}</td>
                 <td>{{ student.user.email }}</td>
                 <td>{{ student.phoneNumber }}</td>
+                <td>
+                    <a [routerLink]="['/coordinator/student', student.id]">Ver</a>
+                </td>
                 <!-- td>
                     <p-button icon="pi pi-ellipsis-v" (click)="onShowMenu($event, country)" [rounded]="true" [text]="true"></p-button>
                 </td -->
