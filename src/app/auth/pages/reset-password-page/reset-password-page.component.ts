@@ -34,11 +34,11 @@ export class ResetPasswordPageComponent {
     this.token = this.route.snapshot.paramMap.get('token') ?? '';
   }
   
-  isValidField( field: string ) {
+  public isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.resetPasswordForm, field );
   }
 
-  resetPassword() {
+  public resetPassword(): void {
     if( !this.resetPasswordForm.valid ) 
       return this.resetPasswordForm.markAllAsTouched();
 

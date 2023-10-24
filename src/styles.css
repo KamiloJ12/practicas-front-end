@@ -1,5 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
 body {
     padding: 0;
     margin: 0;
+}
+
+::-webkit-scrollbar {
+    /*background-color: aqua;*/
+    width: 8px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    /*background-color: blueviolet;*/
+}
+
+::-webkit-scrollbar-track {
+    /*background-color: brown;*/
+}
+
+::-webkit-scrollbar-track-piece {
+    /*background-color: cadetblue;
+    width: 2px;*/
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    width: 1px;
+    background-color: rgba(138, 141, 133, 0.856);
 }

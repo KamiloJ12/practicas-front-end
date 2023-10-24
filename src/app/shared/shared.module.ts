@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CapitalizeSentencesPipe } from './pipes/capitalize-sentences.pipe';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { FileInputComponent } from './components/file-input/file-input.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
     SidebarItemComponent,
     CapitalizeSentencesPipe,
     SearchBoxComponent,
+    FileInputComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
     SidebarComponent,
     CapitalizeSentencesPipe,
     SearchBoxComponent,
+    FileInputComponent
   ]
 })
 export class SharedModule { }

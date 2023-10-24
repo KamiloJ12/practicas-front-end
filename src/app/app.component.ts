@@ -2,6 +2,8 @@ import { Component, computed, effect, inject } from '@angular/core';
 import { AuthService } from './auth/services/auth.service';
 import { AuthStatus } from './auth/interfaces';
 import { Router } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
+import { esJson } from 'src/assets/json/es';
 
 @Component({
   selector: 'app-root',
@@ -20,16 +22,19 @@ export class AppComponent {
     return true;
   });
 
-  /* public authStatusChangedEffect = effect(() => {
+  constructor(private config: PrimeNGConfig) {}
+
+  public ngOnInit() {
+    this.config.setTranslation(esJson);
+  }
+
+  public authStatusChangedEffect = effect(() => {
     switch( this.authService.authStatus() ) {
       case AuthStatus.checking:
-        return;
-      case AuthStatus.authenticated:
-        this.router.navigateByUrl('/coordinator');
         return;
       case AuthStatus.notAuthenticated:
         this.router.navigateByUrl('/auth/login');
         return;
     }
-  }); */
+  });
 }

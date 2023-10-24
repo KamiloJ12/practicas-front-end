@@ -24,12 +24,12 @@ export class CountryService {
     };
   }
 
-  getCountries(): Observable<Country[]> {
+  public getCountries(): Observable<Country[]> {
     const url = `${this.baseUrl}/countries`;
     return this.http.get<Country[]>(url, this.commonOptions);
   }
 
-  patchCountry( country: Country ): Observable<boolean> {
+  public patchCountry( country: Country ): Observable<boolean> {
     const url = `${this.baseUrl}/countries/${country.id}`;
     return this.http.patch<boolean>(url, { name: country.name }, this.commonOptions)
       .pipe(
@@ -38,7 +38,7 @@ export class CountryService {
       );
   }
 
-  addCountry( country: Country ): Observable<boolean> {
+  public addCountry( country: Country ): Observable<boolean> {
     const url = `${this.baseUrl}/countries`;
     return this.http.post<Country>(url, { name: country.name }, this.commonOptions)
       .pipe(
@@ -47,12 +47,12 @@ export class CountryService {
       );
   }
 
-  findByName( name: string ): Observable<Country[]> {
+  public findByName( name: string ): Observable<Country[]> {
     const url = `${this.baseUrl}/countries/name/${name}`;
     return this.http.get<Country[]>(url, this.commonOptions);
   }
 
-  findById( id: number ): Observable<Country> {
+  public findById( id: number ): Observable<Country> {
     const url = `${this.baseUrl}/countries/${id}`;
     return this.http.get<Country>(url, this.commonOptions);
   }

@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
 import { PasswordModule } from 'primeng/password';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { RippleModule } from 'primeng/ripple';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
@@ -38,6 +39,7 @@ import { ToastModule } from 'primeng/toast';
     MenuModule,
     PasswordModule,
     ProgressSpinnerModule,
+    RadioButtonModule,
     RippleModule,
     SkeletonModule,
     TableModule,

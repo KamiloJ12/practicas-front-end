@@ -23,11 +23,11 @@ export class RequestResetPasswordPageComponent {
     email: ['', [ Validators.required, Validators.pattern( this.validatorsService.emailPattern ) ]],
   });
 
-  isValidField( field: string ) {
+  public isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.resetPasswordForm, field );
   }
 
-  requestResetPassword() {
+  public requestResetPassword(): void {
     if( !this.resetPasswordForm.valid ) 
       return this.resetPasswordForm.markAllAsTouched();
 

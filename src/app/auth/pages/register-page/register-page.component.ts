@@ -30,11 +30,11 @@ export class RegisterPageComponent {
     ]
   });
 
-  isValidField( field: string ) {
+  public isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.registerForm, field );
   }
 
-  login() {
+  public login(): void {
     if( !this.registerForm.valid ) 
       return this.registerForm.markAllAsTouched();
 

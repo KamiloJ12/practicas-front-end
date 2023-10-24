@@ -1,1 +1,55 @@
-<p>medical-information works!</p>
+<h1 class="mb-6">Informacion Medica</h1>
+
+<form [formGroup]="medicalForm" (ngSubmit)="submitForm()">
+    <div class="formgrid grid">
+        <div class="field col-12 md:col-6">
+            <label for="healthCareCompany">Compañia prestadora de salud</label>
+            <p-dropdown formControlName="healthCareCompany" 
+                        [options]="healthCareCompanies"
+                        id="healthCareCompany" 
+                        styleClass="w-full p-inputtext-sm"
+                        optionLabel="name">
+            </p-dropdown>
+            <small *ngIf="isValidField('healthCareCompany')" 
+                    errorLabel
+                    [errors]="medicalForm.get('healthCareCompany')?.errors" 
+                    class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="affiliationType">Tipo de afiliacion</label>
+            <p-dropdown formControlName="affiliationType" 
+                        [options]="affiliationTypes"
+                        id="affiliationType" 
+                        styleClass="w-full p-inputtext-sm"
+                        optionLabel="name">
+            </p-dropdown>
+            <small *ngIf="isValidField('affiliationType')" 
+                    errorLabel
+                    [errors]="medicalForm.get('affiliationType')?.errors" 
+                    class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="affiliationDate">Fecha de afiliacion</label>
+            <p-calendar styleClass="w-full p-inputtext-sm"
+                        id="affiliationDate"
+                        dateFormat="dd/mm/yy"
+                        formControlName="affiliationDate">
+            </p-calendar>
+            <small *ngIf="isValidField('affiliationDate')" 
+                    errorLabel
+                    [errors]="medicalForm.get('affiliationDate')?.errors" 
+                    class="p-error select-none">
+            </small>
+        </div>
+        <div class="field col-12 md:col-7">
+            <label>Certificado de afiliacion (archivo PDF):</label>
+            <app-file-input (documentFileChange)="onDocumentFileChange($event)">
+            </app-file-input>
+        </div>
+        <div class="field flex col-12 md:col-5 align-items-end justify-content-end">
+            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+        </div> 
+    </div>
+</form>

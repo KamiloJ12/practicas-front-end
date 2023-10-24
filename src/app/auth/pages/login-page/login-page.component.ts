@@ -26,11 +26,11 @@ export class LoginPageComponent {
     password: ['', [ Validators.required, Validators.minLength(6) ]]
   });
 
-  isValidField( field: string ) {
+  public isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.loginForm, field );
   }
 
-  login() {
+  public login(): void {
     if( !this.loginForm.valid ) 
       return this.loginForm.markAllAsTouched();
 

@@ -125,8 +125,13 @@
                    class="p-error select-none">
             </small>
         </div>
-    </div>
-    <div class="flex justify-content-end w-full px-1">
-        <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+        <div class="field col-12 md:col-6">
+            <label>Hoja de vida (archivo PDF):</label>
+            <app-file-input (documentFileChange)="onDocumentFileChange($event)">
+            </app-file-input>
+        </div>
+        <div class="fiel flex col-12 md:col-6 align-items-end justify-content-end">
+            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+        </div>
     </div>
 </form>

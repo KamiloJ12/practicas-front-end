@@ -51,8 +51,8 @@ export class IdentityInformationComponent {
   filterMunicipality(event: AutoCompleteCompleteEvent) {
     const query = event.query;
     const departament = this.identityForm.get('residenceDepartament')?.value.name;
-    this.munipalityService.getSuggestion(query, departament)
-      .subscribe( municipalities => this.filteredMunicipalities = municipalities ); 
+    //this.munipalityService.getSuggestion(query, departament)
+    //  .subscribe( municipalities => this.filteredMunicipalities = municipalities ); 
   }
 
   filterDepartament(event: AutoCompleteCompleteEvent) {
@@ -61,7 +61,17 @@ export class IdentityInformationComponent {
     //   .subscribe( departments => this.filteredDepartments = departments ); 
   }
 
+  onDocumentFileChange(file: File) {
+    this.identityForm.get('documentFile')?.setValue(file);
+  }
+
   submitForm() {
+    this.formDataService.setFormData({
+      ...this.formDataService.getFormData(),
+      identityDocument: this.identityForm.value
+    });
+    console.log(this.formDataService.getFormData());
+    
     if (this.identityForm.invalid) {
       return this.identityForm.markAllAsTouched();
     }
@@ -73,34 +83,5 @@ export class IdentityInformationComponent {
     this.router.navigateByUrl('/student/register/identity-information');
   }
 
-  @ViewChild('fileInput') fileInput!: any;
 
-  onFileDrop(event: DragEvent) {
-    event.preventDefault();
-    const files = event.dataTransfer?.files;
-    if (files) {
-      this.handleFiles(files);
-    }
-  }
-
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-  }
-
-  onFileSelected(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    const files = inputElement.files;
-    if (files) {
-      this.handleFiles(files);
-    }
-  }
-
-  private handleFiles(files: FileList) {
-    if (files?.length) {
-      this.identityForm.get('documentFile')?.setValue(files[0]);
-    } if (this.identityForm.get('documentFile')?.hasError('invalidFileType')) {
-      this.identityForm.get('documentFile')?.setValue(null);
-    }
-    this.fileInput.nativeElement.value = '';
-  }
 }

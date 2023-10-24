@@ -31,6 +31,7 @@ export class BasicPersonalInformationComponent {
     phoneNumber: ['', [ Validators.required ]],
     residenceDepartament: ['', [ Validators.required ]],
     residenceMunicipality: ['', [ Validators.required ]],
+    resumeDocumentFile: [null, [ Validators.required ]]
   });
 
   public filteredMunicipalities: Municipality[] = [];
@@ -57,7 +58,12 @@ export class BasicPersonalInformationComponent {
     //   .subscribe( departments => this.filteredDepartments = departments ); 
   }
 
+  onDocumentFileChange(file: File) {
+    this.basicPersonalForm.get('resumeDocumentFile')?.setValue(file);
+  }
+
   submitForm() {
+    this.formDataService.setFormData(this.basicPersonalForm.value);
     if (this.basicPersonalForm.invalid) {
       return this.basicPersonalForm.markAllAsTouched();
     }

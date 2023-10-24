@@ -62,31 +62,8 @@
         </div>
         <div class="field col-12 md:col-7">
             <label>Documento (archivo PDF):</label>
-            <div class="flex flex-column align-items-center justify-content-center cursor-pointer
-                        border-dashed border-1 border-500 border-round w-full h-16rem"
-                 (drop)="onFileDrop($event)"
-                 (dragover)="onDragOver($event)"
-                 (click)="fileInput.click()">
-                <input #fileInput 
-                       type="file" 
-                       class="file-input"
-                       (change)="onFileSelected($event)" 
-                       hidden>
-                <div class="flex flex-column text-400 justify-content-center 
-                            align-items-center text-center" *ngIf="identityInfo.documentFile == null">
-                    <i class="pi pi-cloud-upload text-8xl mb-3"></i>
-                    Chose a file or drag it here
-                </div>
-                <div class="flex flex-column text-red-400 justify-content-center 
-                            align-items-center text-center" *ngIf="identityInfo.documentFile != null">
-                    <i class="pi pi-file-pdf text-8xl mb-4"></i>
-                    {{ identityInfo.documentFile.name }}
-                </div>
-            </div>
-            <small *ngIf="identityForm.get('documentFile')?.hasError('invalidFileType')" 
-                   class="p-error select-none">
-                   Solo se permiten archivos PDF.
-            </small>
+            <app-file-input (documentFileChange)="onDocumentFileChange($event)">
+            </app-file-input>
         </div>
         <div class="field flex col-12 md:col-5 align-items-end justify-content-end">
             <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
