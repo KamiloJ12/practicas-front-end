@@ -13,7 +13,7 @@ export class StudentsService {
 
   constructor() { }
 
-  private getCommonOptions(): { headers: HttpHeaders } {
+  private get commonOptions(): { headers: HttpHeaders } {
     const authToken = localStorage.getItem('token'); // Obtener el token del Local Storage
 
     return {
@@ -26,8 +26,11 @@ export class StudentsService {
 
   getStudents(): Observable<any[]> {
     const url = `${this.baseUrl}/students`;
-    const options = this.getCommonOptions();
+    return this.http.get<any[]>(url, this.commonOptions);
+  }
 
-    return this.http.get<any[]>(url, options);
+  public getUserById(id: number) {
+    const url = `${this.baseUrl}/students/${id}`;
+    return this.http.get<any>(url, this.commonOptions);
   }
 }

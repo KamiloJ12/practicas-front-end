@@ -32,6 +32,9 @@ export class AppComponent {
     switch( this.authService.authStatus() ) {
       case AuthStatus.checking:
         return;
+      case AuthStatus.authenticated:
+        this.router.navigateByUrl('/coordinardor');
+        return;
       case AuthStatus.notAuthenticated:
         this.router.navigateByUrl('/auth/login');
         return;
