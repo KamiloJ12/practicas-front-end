@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
 import { CalendarModule } from 'primeng/calendar';
+import { ChartModule } from 'primeng/chart';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
@@ -21,6 +22,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 
 
+
 @NgModule({
   declarations: [],
   imports: [],
@@ -30,6 +32,7 @@ import { ToastModule } from 'primeng/toast';
     CarouselModule,
     CalendarModule,
     CardModule,
+    ChartModule,
     CheckboxModule,
     DialogModule,
     DividerModule,

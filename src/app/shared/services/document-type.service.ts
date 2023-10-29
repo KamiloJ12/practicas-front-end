@@ -10,7 +10,7 @@ import { DocumentType } from '../interfaces';
 export class DocumentTypeService {
 
   private http = inject(HttpClient);
-  private baseUrl: string = environments.baseUrl;
+  private baseUrl: string = `${environments.baseUrl}/document-type`;
 
   constructor() { }
 
@@ -23,8 +23,8 @@ export class DocumentTypeService {
     };
   }
 
-  getDocumentsType(): Observable<DocumentType[]> {
-    const url = `${this.baseUrl}/document-type`;
+  findAll(): Observable<DocumentType[]> {
+    const url = `${this.baseUrl}`;
     return this.http.get<DocumentType[]>(url, this.commonOptions);
   }
 }

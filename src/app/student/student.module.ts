@@ -2,37 +2,35 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StudentRoutingModule } from './student-routing.module';
-import { RegiterStudentComponent } from './pages/regiter-student/regiter-student.component';
-import { BasicPersonalInformationComponent } from './components/basic-personal-information/basic-personal-information.component';
-import { AcademicInformationComponent } from './components/academic-information/academic-information.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { NavigationFormStepsComponent } from './components/navigation-form-steps/navigation-form-steps.component';
-import { IdentityInformationComponent } from './components/identity-information/identity-information.component';
-import { MedicalInformationComponent } from './components/medical-information/medical-information.component';
-import { PreferencesComponent } from './components/preferences/preferences.component';
-import { ProgrammingLanguagesComponent } from './components/programming-languages/programming-languages.component';
-import { FrameworksComponent } from './components/frameworks/frameworks.component';
+
+import { RegisterBasicInformationComponent } from './pages/register-basic-information/register-basic-information.component';
+import { RegisterIdentityDocumentationComponent } from './pages/register-identity-documentation/register-identity-documentation.component';
+import { RegisterAcademicInformationComponent } from './pages/register-academic-information/register-academic-information.component';
+import { RegisterMedicalInformationComponent } from './pages/register-medical-information/register-medical-information.component';
+import { RegisterDevelopmentAreasComponent } from './pages/register-development-areas/register-development-areas.component';
+import { RegisterProgrammingLanguagesComponent } from './pages/register-programming-languages/register-programming-languages.component';
+import { RegisterFrameworksComponent } from './pages/register-frameworks/register-frameworks.component';
 
 
 @NgModule({
   declarations: [
-    RegiterStudentComponent,
-    BasicPersonalInformationComponent,
-    AcademicInformationComponent,
-    NavigationFormStepsComponent,
-    IdentityInformationComponent,
-    MedicalInformationComponent,
-    PreferencesComponent,
-    ProgrammingLanguagesComponent,
-    FrameworksComponent,
+    RegisterBasicInformationComponent,
+    RegisterIdentityDocumentationComponent,
+    RegisterAcademicInformationComponent,
+    RegisterMedicalInformationComponent,
+    RegisterDevelopmentAreasComponent,
+    RegisterProgrammingLanguagesComponent,
+    RegisterFrameworksComponent,
   ],
   imports: [
     CommonModule,
     StudentRoutingModule,
     PrimeNgModule,
     ReactiveFormsModule,
+    FormsModule,
     SharedModule
   ]
 })

@@ -1,0 +1,124 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-7">
+    <div class="grid">
+        <div class="col-12 lg:col-2">
+            <div class="text-900 font-medium text-xl mb-3 mr-2">
+                Areas de Desarrollo
+            </div>
+            <p class="m-0 p-0 text-600 line-height-3 mr-4 text-sm">
+                Por favor, completa el siguiente formulario con la 
+                información de preferencias de areas de desarrollo 
+                del estudiante. Todos los campos son obligatorios.
+            </p>
+        </div>
+        <div class="col-12 lg:col-10">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid formgrid p-fluid">
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Areas de desarrollo
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="font-medium text-center"> 
+                                {{ i }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Mantenimiento de hardware y software
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="hardSoftMaintance"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Mantenimiento y administracion de redes
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="networkMaintance"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Capacitación
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="training"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Desarrollo de software (Escritorio, movil y web)
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="softDevelopment"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Servidores y computacion en la nube
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="cloudComputing"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Direccipon y evaluación de proyectos
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="projectManager"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12">
+                    <div class="grid">
+                        <div class="col-7">
+                            Inteligencia artificial
+                        </div>
+                        <div class="field col-1" *ngFor="let i of [1,2,3,4,5]">
+                            <div class="flex justify-content-center">
+                                <p-radioButton [value]="i" formControlName="artificialIntelligence"></p-radioButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field mt-6 col-12">
+                    <div class="grid">
+                        <div class="field col-12 md:col-6">
+                            <p-button label="Atras" (click)="onBack()" [outlined]="true" severity="secondary"></p-button>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+                        </div>   
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

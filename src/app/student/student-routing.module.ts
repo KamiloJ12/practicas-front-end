@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegiterStudentComponent } from './pages/regiter-student/regiter-student.component';
-import { BasicPersonalInformationComponent } from './components/basic-personal-information/basic-personal-information.component';
-import { AcademicInformationComponent } from './components/academic-information/academic-information.component';
-import { IdentityInformationComponent } from './components/identity-information/identity-information.component';
-import { MedicalInformationComponent } from './components/medical-information/medical-information.component';
-import { PreferencesComponent } from './components/preferences/preferences.component';
-import { ProgrammingLanguagesComponent } from './components/programming-languages/programming-languages.component';
-import { FrameworksComponent } from './components/frameworks/frameworks.component';
+
+import { RegisterBasicInformationComponent } from './pages/register-basic-information/register-basic-information.component';
+import { RegisterIdentityDocumentationComponent } from './pages/register-identity-documentation/register-identity-documentation.component';
+import { RegisterAcademicInformationComponent } from './pages/register-academic-information/register-academic-information.component';
+import { RegisterMedicalInformationComponent } from './pages/register-medical-information/register-medical-information.component';
+import { RegisterDevelopmentAreasComponent } from './pages/register-development-areas/register-development-areas.component';
+import { RegisterProgrammingLanguagesComponent } from './pages/register-programming-languages/register-programming-languages.component';
+import { RegisterFrameworksComponent } from './pages/register-frameworks/register-frameworks.component';
+
 const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'register', 
-        component: RegiterStudentComponent,
+      { path: 'register',
         children: [
-          { path: 'basic-information', component: BasicPersonalInformationComponent },
-          { path: 'academic-information', component: AcademicInformationComponent },
-          { path: 'identity-information', component: IdentityInformationComponent },
-          { path: 'medical-information', component: MedicalInformationComponent },
-          { path: 'preferences', component: PreferencesComponent },
-          { path: 'programming-languages', component: ProgrammingLanguagesComponent },
-          { path: 'frameworks', component: FrameworksComponent },
-          { path: '**', redirectTo: 'basic-information' }
+          { path: 'new-basic-information', component: RegisterBasicInformationComponent },
+          { path: 'new-identity-documentation', component: RegisterIdentityDocumentationComponent },
+          { path: 'new-academy-information', component: RegisterAcademicInformationComponent },
+          { path: 'new-medical-information', component: RegisterMedicalInformationComponent },
+          { path: 'new-development-area', component: RegisterDevelopmentAreasComponent },
+          { path: 'new-programming-language', component: RegisterProgrammingLanguagesComponent },
+          { path: 'new-frameworks', component: RegisterFrameworksComponent },
+          { path: '**', redirectTo: 'new-basic-information' }
         ] 
       }
     ]

@@ -9,7 +9,7 @@ import { environments } from 'src/environments/environments';
 export class StudentsService {
 
   private http = inject(HttpClient);
-  private baseUrl: string = environments.baseUrl;
+  private baseUrl: string = `${environments.baseUrl}/students`;
 
   constructor() { }
 
@@ -24,13 +24,18 @@ export class StudentsService {
     };
   }
 
-  getStudents(): Observable<any[]> {
-    const url = `${this.baseUrl}/students`;
+  public createStudent(data: any) {
+    const url = `${this.baseUrl}`;
+    return this.http.post(url, data, this.commonOptions);
+  }
+
+  public getStudents(): Observable<any[]> {
+    const url = `${this.baseUrl}`;
     return this.http.get<any[]>(url, this.commonOptions);
   }
 
   public getUserById(id: number) {
-    const url = `${this.baseUrl}/students/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.http.get<any>(url, this.commonOptions);
   }
 }

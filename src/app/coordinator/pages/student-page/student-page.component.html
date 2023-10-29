@@ -1,78 +1,188 @@
-<div class="p-4">
-    <h1>Estudiante</h1>
-    <div class="grid">
+<div class="bg-white grid align-items-center gap-4 border-round p-4 mb-4 border-1 surface-border">
+    
+    <div class="col-12 md:col-2 flex justify-content-center">
+        <img [src]="student?.pictureFile"
+             class="h-8rem w-8rem col-12 md:col-6 border-circle"
+        >
+    </div>
+
+    <div class="grid col-12 md:col-9">
         <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Nombre</div>
-            <div class="text-900">{{ student.firstName + ' ' + student.lastName }}</div>
+            <div class="text-400 font-medium mb-2">Nombre</div>
+            <p-skeleton *ngIf="student == null"></p-skeleton>
+            <div class="text-900">{{ student?.firstName + ' ' + student?.lastName }}</div>
         </div>
         <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Correo electronico</div>
-            <div class="text-900">{{ student.user.email }}</div>
+            <div class="text-400 font-medium mb-2">Correo electronico</div>
+            <p-skeleton *ngIf="student == null"></p-skeleton>
+            <div class="text-900">{{ student?.user.email }}</div>
         </div>
         <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Genero</div>
-            <div class="text-900">{{ student.gender }}</div>
-        </div> 
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Fecha de nacimiento</div>
-            <div class="text-900">{{ student.birthdate | date: 'd MMMM, y' }}</div>
+            <div class="text-400 font-medium mb-2">Dirección</div>
+            <p-skeleton *ngIf="student == null"></p-skeleton>
+            <div class="text-900">{{ student?.address }}</div>
         </div>
         <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Dirección</div>
-            <div class="text-900">{{ student.address }}</div>
+            <div class="text-400 font-medium mb-2">Número de telefono</div>
+            <p-skeleton *ngIf="student == null"></p-skeleton>
+            <div class="text-900">{{ student?.phoneNumber }}</div>
         </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Número de telefono</div>
-            <div class="text-900">{{ student.phoneNumber }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Código de estudiante</div>
-            <div class="text-900">{{ student.studentCode }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Semestre actual</div>
-            <div class="text-900">{{ student.currentSemester }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Estado</div>
-            <div class="text-900">{{ student.status }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Documento de identidad</div>
-            <div class="text-900">{{ student.identityDocument.documentNumber }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Departamento de residencia</div>
-            <div class="text-900">{{ student.residenceDepartament.name | capitalizeSentences }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Municipio de residencia</div>
-            <div class="text-900">{{ student.residenceMunicipality.name | capitalizeSentences }}</div>
-        </div>
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Compañia prestadora de salud</div>
-            <div class="text-900">{{ student.healthCareCompanyEnrollment.healthCareCompany.name | capitalizeSentences }}</div>
-        </div> 
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Tipo de afiliacion</div>
-            <div class="text-900">{{ student.healthCareCompanyEnrollment.affiliationType | capitalizeSentences }}</div>
-        </div> 
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Fecha de afiliación</div>
-            <div class="text-900">{{ student.healthCareCompanyEnrollment.affiliationDate | date: 'd MMMM, y' }}</div>
-        </div> 
-        <div class="col-12 md:col-6 p-3">
-            <div class="text-500 font-medium mb-2">Municipio de residencia</div>
-            <div class="text-900">{{ student.residenceMunicipality.name }}</div>
-        </div>        
-    </div>  
+    </div>
+
 </div>
 
-{{
-    student | json
-}}
+<div class="p-fluid flex flex-column lg:flex-row">
+    
+    <nav>
+        <ul class="list-none m-0 p-0 flex flex-row lg:flex-column justify-content-evenly 
+                   md:justify-content-between lg:justify-content-start mb-5 lg:pr-8 lg:mb-0">
+            <li>
+                <a *ngFor="let item of items" class="flex align-items-center cursor-pointer p-3 border-round text-800 
+                          hover:surface-hover transition-duration-150 transition-colors no-underline"
+                    [href]="item.link">
+                    {{ item.label }}
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-<!-- 
-"status": "En proceso", "identityDocument": { "id": 1, "documentNumber": "1010055669", "issuanceDate": "2023-05-25T05:00:00.000Z", "documentFile": "documento", "createdDate": "2023-10-22T18:30:34.323Z", "updatedDate": "2023-10-22T18:30:34.323Z", "deletedAt": null }, "user": { "id": 5, "email": "angieestefaniajave@ufps.edu.co", "password": "$2b$10$9PUqrOJVH./hsTv0XZCHhOk8nK.2lebxsTbBYUFBTs0D45Uv7gTha", "isActive": true, "role": "Student", "isEmailConfirmed": false, "createdDate": "2023-10-15T00:00:39.110Z", "updatedDate": "2023-10-15T16:43:04.145Z", "deletedAt": null } }
+    <div>
+        <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
+            <div class="grid">
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Nombre</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.firstName + ' ' + student?.lastName }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Correo electronico</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.user?.email }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Genero</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.gender }}</div>
+                </div> 
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Fecha de nacimiento</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.birthdate | date: 'd MMMM, y' }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Dirección</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.address }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Departamento de residencia</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.residenceDepartament.name | capitalizeSentences }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Municipio de residencia</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.residenceMunicipality.name | capitalizeSentences }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Número de telefono</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.phoneNumber }}</div>
+                </div>
+            </div>
+        </div>
 
--->
+        <div id="documento" class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
+            <div class="col-12 md:col-6 p-3">
+                <div class="text-500 font-medium mb-2">Documento de identidad</div>
+                <p-skeleton *ngIf="student == null"></p-skeleton>
+                <div class="text-900">{{ student?.identityDocument.documentNumber }}</div>
+            </div>
+        </div>
+
+        <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
+            <div class="grid">
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Código de estudiante</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.studentCode }}</div>
+                </div>
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Semestre actual</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.currentSemester }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
+            <div class="grid">
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Compañia prestadora de salud</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.healthCareCompanyEnrollment.healthCareCompany.name | capitalizeSentences }}</div>
+                </div> 
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Tipo de afiliacion</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.healthCareCompanyEnrollment.affiliationType | capitalizeSentences }}</div>
+                </div> 
+                <div class="col-12 md:col-6 p-3">
+                    <div class="text-500 font-medium mb-2">Fecha de afiliación</div>
+                    <p-skeleton *ngIf="student == null"></p-skeleton>
+                    <div class="text-900">{{ student?.healthCareCompanyEnrollment.affiliationDate | date: 'd MMMM, y' }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
+            <div class="col-12 p-3">
+                <div class="text-500 font-medium mb-2">Lenguages de programacion</div>
+                <p-skeleton *ngIf="student == null"></p-skeleton>
+                <div class="flex flex-wrap gap-3">
+                    <div *ngFor="let programmingLanguage of student?.programmingLanguages"
+                      class="border-round border-1 surface-border px-3 py-2 bg-blue-50">
+                        {{ programmingLanguage.name }}
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
+            <div class="col-12 p-3">
+                <div class="text-500 font-medium">Areas de desarrollo de practicas</div>
+
+                <p-chart type="radar" [data]="dataDevelopmentArea"></p-chart>
+
+                <div>   
+                    <div>
+                        Mantenimiento de hardware y software
+                        {{ student?.developmentArea.hardSoftMaintenance }}, 
+                    </div>
+                    <div>
+                        Mantenimiento de redes
+                        {{ student?.developmentArea.networkMaintenance }}, 
+                    </div>
+                    <div>
+                        Capacitacion
+                        {{ student?.developmentArea.training }}, 
+                    </div>
+                    <div>
+                        Desarrollo de software (Destopk, movil, web)
+                        {{ student?.developmentArea.softDevelopment }}, 
+                    </div>
+                    <div>
+                        Computacion en la nube
+                        {{ student?.developmentArea.cloudComputing }}, 
+                    </div>
+                    <div>
+                        Gerente de proyecto
+                        {{ student?.developmentArea.projectManager }}, 
+                    </div>
+                </div>  
+            </div>  
+        </div>
+    </div>
+
+    
+</div>

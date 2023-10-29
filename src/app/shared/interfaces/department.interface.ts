@@ -2,8 +2,11 @@ import { Country } from "./country.interface";
 import { Municipality } from "./municipality.interfaces";
 
 export interface Department {
-    id: number;
+    id?: number;
     name: string;
     country?: Country;
     municipalities: Municipality[];
+    createdDate: Date;
+    updatedDate: Date;
+    deletedAt: Date;
 }

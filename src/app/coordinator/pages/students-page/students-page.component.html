@@ -1,4 +1,4 @@
-<div class="card p-4">
+<div class="card bg-white p-4">
     <h1 class="text-800">Estudiantes</h1>
 
     <!-- Header -->
@@ -7,7 +7,7 @@
         <app-search-box
             class="w-full"
             (onDebounce)="table.filterGlobal($event, 'contains')"
-            placeholder="Buscar estudiante por #, nombre, apellido, telefono o email..."
+            placeholder="Buscar..."
         ></app-search-box>
         <p-button icon="pi pi-plus" (onClick)="showModalDialog()" [outlined]="true" severity="secondary"></p-button>
         <!-- p-button (click)="onShowDialog()" label="Agregar" size="small" [outlined]="true"></p-button -->
@@ -20,12 +20,16 @@
              [showCurrentPageReport]="true"
              [paginator]="true"
              currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} estudiantes"
-             [globalFilterFields]="['firstName', 'studentCode', 'lastName', 'user.email', 'phoneNumber']"
+             [globalFilterFields]="['firstName', 'studentCode', 'student.identityDocument.documentNumber', 'lastName', 'user.email', 'phoneNumber']"
         >
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="studentCode" style="width:20%">
+                <th pSortableColumn="studentCode">
                     Codigo
+                    <p-sortIcon field="studentCode"></p-sortIcon>
+                </th>
+                <th pSortableColumn="documentNumber">
+                    Cedula
                     <p-sortIcon field="studentCode"></p-sortIcon>
                 </th>
                 <th pSortableColumn="firstName">
@@ -49,11 +53,12 @@
         </ng-template>
         <ng-template pTemplate="body" let-student>
             <tr>
-                <td>{{ student.studentCode }}</td>
-                <td>{{ student.firstName | capitalizeSentences }}</td>
-                <td>{{ student.lastName | capitalizeSentences }}</td>
-                <td>{{ student.user.email }}</td>
-                <td>{{ student.phoneNumber }}</td>
+                <td>{{ student?.studentCode }}</td>
+                <td>{{ student?.identityDocument?.documentNumber}}</td>
+                <td>{{ student?.firstName | capitalizeSentences }}</td>
+                <td>{{ student?.lastName | capitalizeSentences }}</td>
+                <td>{{ student?.user?.email }}</td>
+                <td>{{ student?.phoneNumber }}</td>
                 <td>
                     <a [routerLink]="['/coordinator/student', student.id]">Ver</a>
                 </td>
@@ -64,13 +69,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="5" class="text-center">No se encontraron estudiantes.</td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="loading">
-            <tr *ngFor="let _ of [1,2,3,4,5]">
-              <td><p-skeleton></p-skeleton></td>
-              <td><p-skeleton></p-skeleton></td>
+                <td colspan="6" class="text-center">No se encontraron estudiantes.</td>
             </tr>
         </ng-template>
     </p-table>

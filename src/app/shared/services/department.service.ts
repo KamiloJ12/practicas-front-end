@@ -11,7 +11,7 @@ import { Country } from '../interfaces';
 export class DepartmentService {
 
   private http = inject(HttpClient);
-  private baseUrl: string = environments.baseUrl;
+  private baseUrl: string = `${environments.baseUrl}/departments`;
 
   constructor() { }
 
@@ -24,32 +24,18 @@ export class DepartmentService {
     };
   }
 
-  getDepartments(): Observable<Department[]> {
-    const url = `${this.baseUrl}/departments`;
+  findAll(): Observable<Department[]> {
+    const url = `${this.baseUrl}`;
     return this.http.get<Department[]>(url, this.commonOptions);
   }
 
   findByName( name: string ): Observable<Department[]> {
-    const url = `${this.baseUrl}/departments/name/${name}`;
+    const url = `${this.baseUrl}/name/${name}`;
     return this.http.get<Department[]>(url, this.commonOptions);
   }
 
-  addDepartment( department: Department, country: Country ): Observable<boolean> {
-    const url = `${this.baseUrl}/departments`;
-    const data = { name: department.name, country: country.id };
-    return this.http.post<Department>(url, data, this.commonOptions)
-      .pipe(
-        map(() => true),
-        catchError(err => throwError(() => err.error.message))
-      );
-  }
-
-  pathDepartment( department: Department): Observable<boolean> {
-    const url = `${this.baseUrl}/departments/${department.id}`;
-    return this.http.patch<Department>(url, { name: department.name }, this.commonOptions)
-      .pipe(
-        map(() => true),
-        catchError(err => throwError(() => err.error.message))
-      );
+  findByCountry( countryId: number ): Observable<Department[]> {
+    const url = `${this.baseUrl}/byCountry/${countryId}`;
+    return this.http.get<Department[]>(url, this.commonOptions);
   }
 }

@@ -1,0 +1,113 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-7">
+    <div class="grid">
+        <div class="col-12 lg:col-2">
+            <div class="text-900 font-medium text-xl mb-3">
+                Documento de identificación
+            </div>
+            <p class="m-0 p-0 text-600 line-height-3 mr-4 text-sm">
+                Por favor, completa el siguiente formulario con la 
+                información del documento de identidad del estudiante. 
+                Todos los campos son obligatorios.
+            </p>
+        </div>
+        <div class="col-12 lg:col-10">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid formgrid p-fluid">
+                <div class="field col-12 md:col-6">
+                    <label for="documentNumber">Número de documento</label>
+                    <p-inputNumber inputId="integeronly"
+                                id="documentNumber"
+                                [min]="0"
+                                class="w-full"
+                                styleClass="w-full p-inputtext-sm" 
+                                formControlName="documentNumber"/>
+                    <small *ngIf="isValidField('documentNumber')" 
+                            errorLabel
+                            [errors]="form.get('documentNumber')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label for="documentType">Tipo de documentos</label>
+                    <p-dropdown formControlName="documentType" 
+                                [options]="documentsType"
+                                id="documentType" 
+                                styleClass="w-full p-inputtext-sm"
+                                optionLabel="name">
+                    </p-dropdown>
+                    <small *ngIf="isValidField('documentType')" 
+                           errorLabel
+                           [errors]="form.get('documentType')?.errors" 
+                           class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="issuanceDate">Fecha de expedición</label>
+                    <p-calendar styleClass="w-full p-inputtext-sm"
+                                dateFormat="dd/mm/yy"
+                                formControlName="issuanceDate">
+                    </p-calendar>
+                    <small *ngIf="isValidField('issuanceDate')" 
+                           errorLabel
+                           [errors]="form.get('issuanceDate')?.errors" 
+                           class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label>País de expedicion</label>
+                    <p-dropdown [options]="countries" 
+                                optionLabel="name" 
+                                styleClass="p-inputtext-sm"
+                                (onChange)="onCountryChange($event)"
+                                [filter]="true" filterBy="name" [showClear]="true" 
+                                placeholder="Seleccione un pais">
+                    </p-dropdown>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label>Departamento de expedicion</label>
+                    <p-dropdown [options]="departments" 
+                                optionLabel="name" 
+                                styleClass="p-inputtext-sm"
+                                (onChange)="onDepartmentChange($event)"
+                                [filter]="true" filterBy="name" [showClear]="true" 
+                                placeholder="Seleccione un departamento">
+                    </p-dropdown>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="issuancePlace">Municipio de expedicion</label>
+                    <p-dropdown [options]="municipalities" 
+                                formControlName="issuancePlace" 
+                                optionLabel="name" 
+                                styleClass="p-inputtext-sm"
+                                [filter]="true" filterBy="name" [showClear]="true" 
+                                placeholder="Seleccione un municipio">
+                    </p-dropdown>
+                    <small *ngIf="isValidField('issuancePlace')" 
+                           errorLabel
+                           [errors]="form.get('issuancePlace')?.errors" 
+                           class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <label>Documento (archivo PDF):</label>
+                    <app-file-input (documentFileChange)="onDocumentFileChange($event)">
+                    </app-file-input>
+                    <small *ngIf="isValidField('documentFile')" 
+                            errorLabel
+                            [errors]="form.get('documentFile')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <div class="grid">
+                        <div class="field col-12 md:col-6">
+                            <p-button label="Atras" (click)="onBack()" [outlined]="true" severity="secondary"></p-button>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+                        </div>   
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

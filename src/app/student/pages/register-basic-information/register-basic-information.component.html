@@ -1,0 +1,143 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-7">
+    <div class="grid">
+        <div class="col-12 lg:col-2">
+            <div class="text-900 font-medium text-xl mb-3">
+                Perfil
+            </div>
+            <p class="m-0 p-0 text-600 line-height-3 mr-4 text-sm">
+                Por favor, completa el siguiente formulario con la 
+                información de identidad del estudiante. 
+                Todos los campos son obligatorios.
+            </p>
+        </div>
+        <div class="col-12 lg:col-10">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid formgrid p-fluid">
+                <div class="field col-12 md:col-6">
+                    <div class="field mb-4">
+                        <label for="firstName">Nombre</label>
+                        <input pInputText
+                                id="firstName" 
+                                type="text"
+                                class="w-full p-inputtext-sm" 
+                                formControlName="firstName"/>
+                        <small *ngIf="isValidField('firstName')" 
+                                errorLabel
+                                [errors]="form.get('firstName')?.errors" 
+                                class="p-error select-none">
+                        </small>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Apellidos</label>
+                        <input pInputText
+                            id="lastName" 
+                            type="text"
+                            class="w-full p-inputtext-sm" 
+                            formControlName="lastName"/>
+                        <small *ngIf="isValidField('lastName')" 
+                            errorLabel
+                            [errors]="form.get('lastName')?.errors" 
+                            class="p-error select-none">
+                        </small>
+                    </div>
+                </div>
+                <div class="field flex flex-column align-items-center flex-or col-12 md:col-6">
+                   <label>Foto de perfil</label>
+                   <div class="relative">
+                        <img [src]="pictureUrl" class="border-circle w-10rem h-10rem"> 
+                        <p-button (onClick)="fileInput.click()" icon="pi pi-plus" [rounded]="true" 
+                                  severity="danger"
+                                  styleClass="absolute bottom-0 right-0 cursor-pointer"></p-button>
+                        <input #fileInput type="file" 
+                               formControlName="pictureFile" (change)="onPictureChange($event)"
+                               class="hidden" accept="image/*">
+                   </div>
+                   <small *ngIf="isValidField('pictureFile')" 
+                            errorLabel
+                            [errors]="form.get('pictureFile')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="birthdate">Fecha de nacimiento</label>
+                    <p-calendar styleClass="w-full p-inputtext-sm"
+                                dateFormat="dd/mm/yy"
+                                formControlName="birthdate">
+                    </p-calendar>
+                    <small *ngIf="isValidField('birthdate')" 
+                           errorLabel
+                           [errors]="form.get('birthdate')?.errors" 
+                           class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="phoneNumber">Telefono</label>
+                    <p-inputNumber inputId="integeronly"
+                                   id="phoneNumber"
+                                   class="w-full"
+                                   styleClass="w-full p-inputtext-sm" 
+                                   formControlName="phoneNumber"/>
+                    <small *ngIf="isValidField('birthdate')" 
+                            errorLabel
+                            [errors]="form.get('birthdate')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <label for="address">Direccion</label>
+                    <input pInputText
+                           id="address" 
+                           type="text"
+                           class="w-full p-inputtext-sm" 
+                           formControlName="address"/>
+                    <small *ngIf="isValidField('address')" 
+                           errorLabel
+                           [errors]="form.get('address')?.errors" 
+                           class="p-error select-none">
+                   </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="residenceDepartament">Departamento de residencia</label>
+                    <p-dropdown [options]="departments" 
+                                formControlName="residenceDepartament" 
+                                optionLabel="name" 
+                                styleClass="p-inputtext-sm"
+                                (onChange)="onDepartmentChange($event)"
+                                [filter]="true" filterBy="name" [showClear]="true" 
+                                placeholder="Seleccione un departamento">
+                    </p-dropdown>
+                    <small *ngIf="isValidField('residenceDepartament')" 
+                            errorLabel
+                            [errors]="form.get('residenceDepartament')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="residenceMunicipality">Municipio de residencia</label>
+                    <p-dropdown [options]="municipalities" formControlName="residenceMunicipality" optionLabel="name" 
+                                styleClass="p-inputtext-sm"
+                                [filter]="true" filterBy="name" [showClear]="true" 
+                                placeholder="Seleccione un municipio">
+                    </p-dropdown>
+                    <small *ngIf="isValidField('residenceMunicipality')" 
+                           errorLabel
+                           [errors]="form.get('residenceMunicipality')?.errors" 
+                           class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <label>Hoja de vida (archivo PDF):</label>
+                    <app-file-input (documentFileChange)="onDocumentFileChange($event)">
+                    </app-file-input>
+                    <small *ngIf="isValidField('resumeDocumentFile')" 
+                            errorLabel
+                            [errors]="form.get('resumeDocumentFile')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <p-button class="w-6" label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

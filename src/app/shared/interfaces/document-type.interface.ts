@@ -1,4 +1,7 @@
 export interface DocumentType {
-    id: number;
+    id?: number;
     name: string;
+    createdDate: Date;
+    updatedDate: Date;
+    deletedAt: Date;
 }

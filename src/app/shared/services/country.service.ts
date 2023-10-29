@@ -11,7 +11,7 @@ import { Country } from '../interfaces/country.interface';
 export class CountryService {
 
   private http = inject(HttpClient);
-  private baseUrl: string = environments.baseUrl;
+  private baseUrl: string = `${environments.baseUrl}/countries`;
 
   constructor() { }
 
@@ -24,36 +24,18 @@ export class CountryService {
     };
   }
 
-  public getCountries(): Observable<Country[]> {
-    const url = `${this.baseUrl}/countries`;
+  public findAll(): Observable<Country[]> {
+    const url = `${this.baseUrl}`;
     return this.http.get<Country[]>(url, this.commonOptions);
   }
 
-  public patchCountry( country: Country ): Observable<boolean> {
-    const url = `${this.baseUrl}/countries/${country.id}`;
-    return this.http.patch<boolean>(url, { name: country.name }, this.commonOptions)
-      .pipe(
-        map(() => true),
-        catchError(err => throwError(() => err.error.message))
-      );
-  }
-
-  public addCountry( country: Country ): Observable<boolean> {
-    const url = `${this.baseUrl}/countries`;
-    return this.http.post<Country>(url, { name: country.name }, this.commonOptions)
-      .pipe(
-        map(() => true),
-        catchError(err => throwError(() => err.error.message))
-      );
-  }
-
   public findByName( name: string ): Observable<Country[]> {
-    const url = `${this.baseUrl}/countries/name/${name}`;
+    const url = `${this.baseUrl}/name/${name}`;
     return this.http.get<Country[]>(url, this.commonOptions);
   }
 
   public findById( id: number ): Observable<Country> {
-    const url = `${this.baseUrl}/countries/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.http.get<Country>(url, this.commonOptions);
   }
 }

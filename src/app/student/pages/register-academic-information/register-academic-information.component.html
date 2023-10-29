@@ -1,0 +1,67 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-7">
+    <div class="grid">
+        <div class="col-12 lg:col-2">
+            <div class="text-900 font-medium text-xl mb-3">
+                Información Academica
+            </div>
+            <p class="m-0 p-0 text-600 line-height-3 mr-4 text-sm">
+                Por favor, completa el siguiente formulario con la 
+                información academica del estudiante. 
+                Todos los campos son obligatorios.
+            </p>
+        </div>
+        <div class="col-12 lg:col-10">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid formgrid p-fluid">
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="studentCode">Codigo de estudiante</label>
+                    <p-inputNumber inputId="integeronly"
+                                id="studentCode"
+                                [min]="0"
+                                class="w-full"
+                                styleClass="w-full p-inputtext-sm" 
+                                formControlName="studentCode"/>
+                    <small *ngIf="isValidField('studentCode')" 
+                            errorLabel
+                            [errors]="form.get('studentCode')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12 md:col-6">
+                    <label for="currentSemester">Semestre actual</label>
+                    <p-inputNumber inputId="integeronly"
+                                id="currentSemester"
+                                [min]="0"
+                                [max]="30"
+                                class="w-full"
+                                styleClass="w-full p-inputtext-sm" 
+                                formControlName="currentSemester"/>
+                    <small *ngIf="isValidField('currentSemester')" 
+                            errorLabel
+                            [errors]="form.get('currentSemester')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <label>Horario de clase (archivo PDF):</label>
+                    <app-file-input (documentFileChange)="onDocumentFileChange($event)">
+                    </app-file-input>
+                    <small *ngIf="isValidField('classScheduleFile')" 
+                            errorLabel
+                            [errors]="form.get('classScheduleFile')?.errors" 
+                            class="p-error select-none">
+                    </small>
+                </div>
+                <div class="field mb-4 col-12">
+                    <div class="grid">
+                        <div class="field col-12 md:col-6">
+                            <p-button label="Atras" (click)="onBack()" [outlined]="true" severity="secondary"></p-button>
+                        </div>
+                        <div class="field col-12 md:col-6">
+                            <p-button label="Siguiente" type="submit" styleClass="p-button-danger"></p-button>
+                        </div>   
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
