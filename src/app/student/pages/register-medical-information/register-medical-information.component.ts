@@ -31,6 +31,9 @@ export class RegisterMedicalInformationComponent implements OnInit {
   });
 
   public ngOnInit(): void {
+    const data = this.formDataService.getFormData()?.healthCareCompanyEnrollment;
+    this.form.patchValue(data);
+
     this.healthCareCompanyService.findAll()
       .subscribe( healthCareCompanies => this.healthCareCompanies = healthCareCompanies );
 
@@ -47,8 +50,9 @@ export class RegisterMedicalInformationComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    //if(!this.form.valid) return this.form.markAllAsTouched();
-    this.formDataService.setHealthData(this.form);
+    if(!this.form.valid) return this.form.markAllAsTouched();
+    //this.formDataService.setHealthData(this.form);
+    this.formDataService.setHealthData(this.form.value);
     this.router.navigateByUrl('/student/register/new-development-area');
   }
 

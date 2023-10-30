@@ -1,0 +1,7 @@
+<nav class="flex justify-content-between px-4 lg:px-7 pt-5">
+    <app-logo class="mr-0 lg:mr-6 align-self-center"></app-logo>
+    <div>
+        <p-menu #menu [model]="items" [popup]="true"></p-menu>
+        <p-button [label]="currrentUser?.email" (click)="menu.toggle($event)" icon="pi pi-user" severity="secondary" [outlined]="true" ></p-button>
+    </div>
+</nav>

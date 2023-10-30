@@ -8,12 +8,14 @@ import { RegisterMedicalInformationComponent } from './pages/register-medical-in
 import { RegisterDevelopmentAreasComponent } from './pages/register-development-areas/register-development-areas.component';
 import { RegisterProgrammingLanguagesComponent } from './pages/register-programming-languages/register-programming-languages.component';
 import { RegisterFrameworksComponent } from './pages/register-frameworks/register-frameworks.component';
+import { StudentLayoutComponent } from './layout/student-layout/student-layout.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
       { path: 'register',
+        component: StudentLayoutComponent,
         children: [
           { path: 'new-basic-information', component: RegisterBasicInformationComponent },
           { path: 'new-identity-documentation', component: RegisterIdentityDocumentationComponent },

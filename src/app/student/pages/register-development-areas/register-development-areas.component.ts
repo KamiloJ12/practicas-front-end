@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services';
@@ -9,7 +9,7 @@ import { FormDataService } from '../../services/form-data.service';
   templateUrl: './register-development-areas.component.html',
   styleUrls: ['./register-development-areas.component.css']
 })
-export class RegisterDevelopmentAreasComponent {
+export class RegisterDevelopmentAreasComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
@@ -27,17 +27,23 @@ export class RegisterDevelopmentAreasComponent {
     artificialIntelligence: [null, [ Validators.required ]],
   });
 
+  public ngOnInit(): void {
+    const data = this.formDataService.getFormData()?.developmentArea;
+    this.form.patchValue(data);    
+  }
+
   public isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.form, field );
   }
 
   public onSubmit(): void {
-    //if(!this.form.valid) return this.form.markAllAsTouched();
-    this.formDataService.setDevelopmentAreaData(this.form);
+    if(!this.form.valid) return this.form.markAllAsTouched();
+    
+    this.formDataService.setDevelopmentAreaData(this.form.value);
     this.router.navigateByUrl('/student/register/new-programming-language');
   }
 
   public onBack(): void {
-    this.router.navigateByUrl('/student/register/new-academy-information');
+    this.router.navigateByUrl('/student/register/new-medical-information');
   }
 }

@@ -19,34 +19,38 @@ export class RegisterFrameworksComponent {
   private formDataService = inject(FormDataService);
 
   public frameworks: Framework[] = [];
-  public selectedFrameworks: Framework[] = [];
+  public selectedFrameworks: number[] = [];
 
   public ngOnInit(): void {
     this.frameworksService.findAll()
       .subscribe( frameworks => this.frameworks = frameworks );
+
+    const data = this.formDataService.getFormData()?.frameworks ?? [];
+    this.selectedFrameworks = data;
   }
 
-  public toggleSelection(framework: Framework) {
-    const index = this.selectedFrameworks.findIndex((fran) => fran.id === framework.id);
+  public toggleSelection(frameworkId: number = 0) {
+    const index = this.selectedFrameworks.findIndex((id) => id === frameworkId);
     if (index === -1) {
-      this.selectedFrameworks.push(framework);
+      this.selectedFrameworks.push(frameworkId);
     } else {
       this.selectedFrameworks.splice(index, 1);
     }
   }
   
-  public isSelected(framework: Framework): boolean {
-    return this.selectedFrameworks.some((fran) => fran.id === framework.id);
+  public isSelected(frameworkId: number = 0): boolean {
+    return this.selectedFrameworks.some((id) => id === frameworkId);
   }
 
   public onSubmit(): void {
-    //if(this.selectedFrameworks.length == 0) return;
+    if(this.selectedFrameworks.length == 0) return;
+    
     this.formDataService.setFrameworksData(this.selectedFrameworks);
-    this.studentService.createStudent(this.formDataService.getFormData())
+    this.studentService.createStudent(this.formDataService.getFormDataToSubmit())
       .subscribe();
   }
 
   public onBack(): void {
-    this.router.navigateByUrl('/student/register/new-academy-information');
+    this.router.navigateByUrl('/student/register/new-programming-language');
   }
 }

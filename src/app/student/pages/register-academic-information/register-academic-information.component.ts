@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services';
@@ -9,7 +9,7 @@ import { FormDataService } from '../../services/form-data.service';
   templateUrl: './register-academic-information.component.html',
   styleUrls: ['./register-academic-information.component.css']
 })
-export class RegisterAcademicInformationComponent {
+export class RegisterAcademicInformationComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
@@ -23,6 +23,11 @@ export class RegisterAcademicInformationComponent {
     classScheduleFile: [null, [ Validators.required, this.validatorsService.validatePdfFileType ]],
   });
 
+  public ngOnInit(): void {
+    const data = this.formDataService.getFormData();
+    this.form.patchValue(data);
+  }
+
   public isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.form, field );
   }
@@ -32,8 +37,9 @@ export class RegisterAcademicInformationComponent {
   }
 
   public onSubmit(): void {
-    //if(!this.form.valid) return this.form.markAllAsTouched();
-    this.formDataService.updateFormData(this.form);
+    if(!this.form.valid) return this.form.markAllAsTouched();
+    //this.formDataService.updateFormData(this.form);
+    this.formDataService.updateFormData(this.form.value);
     this.router.navigateByUrl('/student/register/new-medical-information');
   }
 

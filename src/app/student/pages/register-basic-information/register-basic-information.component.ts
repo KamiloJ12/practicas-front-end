@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DepartmentService, MunicipalityService, ValidatorsService } from 'src/app/shared/services';
 import { FormDataService } from '../../services/form-data.service';
 import { Department, Municipality } from 'src/app/shared/interfaces';
-import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'app-register-basic-information',
@@ -18,7 +17,7 @@ export class RegisterBasicInformationComponent implements OnInit {
   
   private departmentService = inject(DepartmentService);
   private munipalityService = inject(MunicipalityService);
-  private studentsSerive = inject(StudentsService);
+  
   private validatorsService = inject(ValidatorsService);
   private formDataService = inject(FormDataService);
 
@@ -40,8 +39,16 @@ export class RegisterBasicInformationComponent implements OnInit {
   });
 
   public ngOnInit(): void {
+    const data = this.formDataService.getFormData();
+    this.form.patchValue(data);
+
     this.departmentService.findByCountry(1)
       .subscribe( departments => this.departments = departments );
+    
+    if(data.residenceDepartament){
+      const event = { value: data.residenceDepartament };
+      this.onDepartmentChange(event);
+    }
   }
 
   public isValidField( field: string ): boolean | null {
@@ -49,7 +56,6 @@ export class RegisterBasicInformationComponent implements OnInit {
   }
 
   public onPictureChange(event: any): void {
-    console.log(event);
     const file = event.target.files[0]; // Obtiene el archivo seleccionado
     if (file) {
       this.form.get('pictureFile')?.setValue(file);
@@ -64,18 +70,17 @@ export class RegisterBasicInformationComponent implements OnInit {
   }
 
   public onDepartmentChange(event: any): void {
-    const departmentId = event?.value?.id;
+    const departmentId = event?.value;
     if(!departmentId) return;
 
-    this.munipalityService.findByDepartment(event.value.id)
+    this.munipalityService.findByDepartment(departmentId)
       .subscribe( municipalities => this.municipalities = municipalities );
   }
 
   public onSubmit(): void {
-    //if(!this.form.valid) return this.form.markAllAsTouched();
-    this.formDataService.setBasicData(this.form);
-    //this.studentsSerive.createStudent(formData)
-    //  .subscribe();
+    if(!this.form.valid) return this.form.markAllAsTouched();
+    
+    this.formDataService.updateFormData(this.form.value);
     this.router.navigateByUrl('/student/register/new-identity-documentation');
   }
 

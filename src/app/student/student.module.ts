@@ -13,6 +13,8 @@ import { RegisterMedicalInformationComponent } from './pages/register-medical-in
 import { RegisterDevelopmentAreasComponent } from './pages/register-development-areas/register-development-areas.component';
 import { RegisterProgrammingLanguagesComponent } from './pages/register-programming-languages/register-programming-languages.component';
 import { RegisterFrameworksComponent } from './pages/register-frameworks/register-frameworks.component';
+import { StudentLayoutComponent } from './layout/student-layout/student-layout.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { RegisterFrameworksComponent } from './pages/register-frameworks/registe
     RegisterDevelopmentAreasComponent,
     RegisterProgrammingLanguagesComponent,
     RegisterFrameworksComponent,
+    StudentLayoutComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
