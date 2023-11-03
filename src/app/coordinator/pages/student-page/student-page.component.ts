@@ -40,8 +40,11 @@ export class StudentPageComponent implements OnInit {
   ];  
 
   public ngOnInit(): void {
-    this.studentsService.getUserById(2)
-      .subscribe( student => this.student = student );
+    this.studentsService.getUstudenById(2)
+      .subscribe( student => {
+        this.student = student;
+        console.log( student ); 
+      });
   }
 
   public get dataDevelopmentArea() {

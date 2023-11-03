@@ -11,7 +11,6 @@ import { RegisterIdentityDocumentationComponent } from './pages/register-identit
 import { RegisterAcademicInformationComponent } from './pages/register-academic-information/register-academic-information.component';
 import { RegisterMedicalInformationComponent } from './pages/register-medical-information/register-medical-information.component';
 import { RegisterDevelopmentAreasComponent } from './pages/register-development-areas/register-development-areas.component';
-import { RegisterProgrammingLanguagesComponent } from './pages/register-programming-languages/register-programming-languages.component';
 import { StudentLayoutComponent } from './layout/student-layout/student-layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -23,7 +22,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RegisterAcademicInformationComponent,
     RegisterMedicalInformationComponent,
     RegisterDevelopmentAreasComponent,
-    RegisterProgrammingLanguagesComponent,
     StudentLayoutComponent,
     NavbarComponent,
   ],

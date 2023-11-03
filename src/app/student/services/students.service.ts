@@ -29,17 +29,12 @@ export class StudentsService {
     return this.http.post(url, data, this.commonOptions);
   }
 
-  public addIdentityDocumnet(data: any) {
-    const url = `${this.baseUrl}/identity-document`;
-    return this.http.patch(url, data, this.commonOptions);
-  }
-
   public getStudents(): Observable<any[]> {
     const url = `${this.baseUrl}`;
     return this.http.get<any[]>(url, this.commonOptions);
   }
 
-  public getUserById(id: number) {
+  public getUstudenById(id: number) {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<any>(url, this.commonOptions);
   }

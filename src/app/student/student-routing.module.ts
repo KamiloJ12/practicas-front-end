@@ -6,7 +6,6 @@ import { RegisterIdentityDocumentationComponent } from './pages/register-identit
 import { RegisterAcademicInformationComponent } from './pages/register-academic-information/register-academic-information.component';
 import { RegisterMedicalInformationComponent } from './pages/register-medical-information/register-medical-information.component';
 import { RegisterDevelopmentAreasComponent } from './pages/register-development-areas/register-development-areas.component';
-import { RegisterProgrammingLanguagesComponent } from './pages/register-programming-languages/register-programming-languages.component';
 import { StudentLayoutComponent } from './layout/student-layout/student-layout.component';
 
 const routes: Routes = [
@@ -21,7 +20,6 @@ const routes: Routes = [
           { path: 'new-academy-information', component: RegisterAcademicInformationComponent },
           { path: 'new-medical-information', component: RegisterMedicalInformationComponent },
           { path: 'new-development-area', component: RegisterDevelopmentAreasComponent },
-          { path: 'new-programming-language', component: RegisterProgrammingLanguagesComponent },
           { path: '**', redirectTo: 'new-basic-information' }
         ] 
       }

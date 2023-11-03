@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { AvatarModule } from 'primeng/avatar';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -27,6 +28,7 @@ import { ToastModule } from 'primeng/toast';
   declarations: [],
   imports: [],
   exports: [
+    AvatarModule,
     AutoCompleteModule,
     ButtonModule,
     CarouselModule,
