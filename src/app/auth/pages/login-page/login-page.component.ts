@@ -37,7 +37,27 @@ export class LoginPageComponent {
     const { email, password } = this.loginForm.value;
     this.authService.login( email, password)
       .subscribe({
-        next: () => this.router.navigateByUrl('/coordinator/'),
+        next: (data) => {
+          const user = this.authService.currentUser();
+          switch(user?.role) {
+            case 'Coordinator': {
+              this.router.navigateByUrl('/coordinator/');
+              break;
+            }
+            case 'Student': {
+              this.router.navigateByUrl('/student/');
+              break;
+            }
+            case 'Company': {
+              this.router.navigateByUrl('/company/');
+              break;
+            }
+            case 'Tutor': {
+              this.router.navigateByUrl('/tutor/');
+              break;
+            }
+          }
+        },
         error: (error) => this.messageService.add({
           severity: 'error',
           detail: error,

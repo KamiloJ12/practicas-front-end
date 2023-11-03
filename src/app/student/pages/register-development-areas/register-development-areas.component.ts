@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services';
 import { FormDataService } from '../../services/form-data.service';
+import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'app-register-development-areas',
@@ -14,12 +15,13 @@ export class RegisterDevelopmentAreasComponent implements OnInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   
+  private studentsService = inject(StudentsService);
   private validatorsService = inject(ValidatorsService);
   private formDataService = inject(FormDataService);
   
   public form: FormGroup = this.fb.group({
-    hardSoftMaintance: [null, [ Validators.required ]],
-    networkMaintance: [null, [ Validators.required ]],
+    hardSoftMaintenance: [null, [ Validators.required ]],
+    networkMaintenance: [null, [ Validators.required ]],
     training: [null, [ Validators.required ]],
     softDevelopment: [null, [ Validators.required ]],
     cloudComputing: [null, [ Validators.required ]],
@@ -40,7 +42,9 @@ export class RegisterDevelopmentAreasComponent implements OnInit {
     if(!this.form.valid) return this.form.markAllAsTouched();
     
     this.formDataService.setDevelopmentAreaData(this.form.value);
-    this.router.navigateByUrl('/student/register/new-programming-language');
+    this.studentsService.createStudent(this.formDataService.getFormDataToSubmit())
+      .subscribe();
+    //this.router.navigateByUrl('/student/register/new-programming-language');
   }
 
   public onBack(): void {
