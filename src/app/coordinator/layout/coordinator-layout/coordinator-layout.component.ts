@@ -17,16 +17,8 @@ export class CoordinatorLayoutComponent {
       icon: 'pi pi-refresh',
       command: () => {
         this.logout();
-          //this.update();
       },
     },
-    {
-      label: 'Delete',
-      icon: 'pi pi-times',
-      command: () => {
-          //this.delete();
-      }   
-    }
   ];
 
   logout() {

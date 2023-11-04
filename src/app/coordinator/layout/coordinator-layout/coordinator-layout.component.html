@@ -1,13 +1,3 @@
-<!-- <div class="min-h-screen">
-    
-    <app-sidebar></app-sidebar>
-
-    <div class="px-4 md:px-6 pb-6 pt-4 min-h-full">
-        <router-outlet></router-outlet>
-    </div>
-
-</div> -->
-
 <div class="h-screen w-screen flex realtive lg:static">
     <div class="lg:block h-screen w-17rem flex-shrink-0 absolute lg:static left-0 top-0 z-1 
                 select-none bg-white px-4 border-300 lg:border-right-1 pt-4 pb-5">
@@ -111,7 +101,10 @@
     <div class="h-screen flex flex-column realtive flex-auto">
         <nav class="flex align-items-center justify-content-between
                     border-bottom-1 border-200 px-4" style="height: 4rem;">
-            <app-search-box placeholder="Buscar..." class="w-26rem"></app-search-box>
+            <div>
+                <p-button icon="pi pi-bars" styleClass="lg:hidden" severity="secondary" [outlined]="true"></p-button>
+                <app-search-box placeholder="Buscar..." class="hidden lg:block w-26rem"></app-search-box>
+            </div>
             <p-avatar label="V" styleClass="mr-2" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar>
         </nav>
         <main class="overflow-y-auto h-full px-5 pt-4">

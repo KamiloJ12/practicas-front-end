@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'coordinator',
-    canActivate: [ isAuthenticatedGuard, emailVerificationGuard, roleGuard ],
+    canActivate: [ isAuthenticatedGuard, emailVerificationGuard ],
     data: { role: 'Coordinator' },
     loadChildren: () => import('./coordinator/coordinator.module').then(m => m.CoordinatorModule),
   },
