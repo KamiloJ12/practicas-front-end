@@ -10,7 +10,6 @@ import { CoordinatorLayoutComponent } from './layout/coordinator-layout/coordina
 import { StudentsPageComponent } from './pages/students-page/students-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { StudentLateralMenuComponent } from './components/student-lateral-menu/student-lateral-menu.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { StudentLateralMenuComponent } from './components/student-lateral-menu/s
     StudentsPageComponent,
     StudentPageComponent,
     NavbarComponent,
-    StudentLateralMenuComponent,
   ],
   imports: [
     CommonModule,

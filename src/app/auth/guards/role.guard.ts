@@ -7,10 +7,9 @@ export const roleGuard: CanActivateFn = (route, state) => {
   const router = inject( Router );
 
   const requiredRole = route.data['role'];
+  console.log('roleGuard(url)= ' + state.url + ' (role)= ' + requiredRole);
   if( authService.checkUserRole(requiredRole) ){
     return true;
   }
-  const url = localStorage.getItem('url') ?? '';
-  router.navigateByUrl(url);
   return false;
 };
