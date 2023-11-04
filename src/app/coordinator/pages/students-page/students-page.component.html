@@ -1,26 +1,24 @@
 
-<h1 class="text-2xl font-bold text-900 mb-5">Estudiantes</h1>
+<h2 class="text-2xl font-bold text-900 mb-5">Estudiantes</h2>
 
 <!-- Header -->
-<div class="flex justify-content-between align-items-center align-content-between mb-5 gap-2">    
-        
+<div class="flex justify-content-between align-items-center align-content-between mb-5 gap-2">     
     <app-search-box
         class="w-full"
         (onDebounce)="table.filterGlobal($event, 'contains')"
         placeholder="Buscar..."
     ></app-search-box>
     <p-button icon="pi pi-plus" label="Agregar" (onClick)="showModalDialog()" [outlined]="true" severity="secondary" size="small"></p-button>
-    
 </div>
 
 <!-- Table -->
 <p-table #table
-            [rows]="5"
+            [rows]="10"
             [value]="students"
             [showCurrentPageReport]="true"
             [paginator]="true"
             currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} estudiantes"
-            [globalFilterFields]="['firstName', 'studentCode', 'student.identityDocument.documentNumber', 'lastName', 'user.email', 'phoneNumber']"
+            [globalFilterFields]="['firstName', 'studentCode', 'identityDocument.documentNumber', 'lastName', 'user.email', 'phoneNumber']"
     >
     <ng-template pTemplate="header">
         <tr>
@@ -28,9 +26,9 @@
                 Codigo
                 <p-sortIcon field="studentCode"></p-sortIcon>
             </th>
-            <th pSortableColumn="documentNumber">
+            <th pSortableColumn="identityDocument.documentNumber">
                 Cedula
-                <p-sortIcon field="studentCode"></p-sortIcon>
+                <p-sortIcon field="identityDocument.documentNumber"></p-sortIcon>
             </th>
             <th pSortableColumn="firstName">
                 Nombre

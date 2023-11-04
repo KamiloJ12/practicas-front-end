@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { isAuthenticatedGuard, isNotAuthenticatedGuard, emailVerificationGuard } from './auth/guards';
+import { isAuthenticatedGuard, isNotAuthenticatedGuard, emailVerificationGuard, roleGuard } from './auth/guards';
 
 const routes: Routes = [
   {
@@ -10,12 +10,14 @@ const routes: Routes = [
   },
   {
     path: 'coordinator',
-    canActivate: [ isAuthenticatedGuard, emailVerificationGuard ],
+    canActivate: [ isAuthenticatedGuard, emailVerificationGuard, roleGuard ],
+    data: { role: 'Coordinator' },
     loadChildren: () => import('./coordinator/coordinator.module').then(m => m.CoordinatorModule),
   },
   {
     path: 'student',
-    canActivate: [ isAuthenticatedGuard ],
+    canActivate: [ isAuthenticatedGuard, emailVerificationGuard, roleGuard ],
+    data: { role: 'Student' },
     loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
   },
   {

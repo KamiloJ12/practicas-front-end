@@ -1,10 +1,87 @@
-<div class="bg-white grid align-items-center gap-4 border-round p-4 mb-4 border-1 surface-border">
+
+<h2 class="text-2xl font-bold text-900 mb-2">Información del Estudiante</h2>
+<div class="text-500 text-sm mb-5">
+    Información del estudiante: {{ student?.firstName }} {{ student?.lastName }}
+</div>
+
+<div class="grid border-top-1 surface-border">
+    <div class="col-12 md:col-3 p-3">
+        <div class="text-500 font-medium mb-2">Nombre</div>
+        <div class="text-900">{{ student?.firstName }}</div>
+    </div>
+    <div class="col-12 md:col-3 p-3">
+        <div class="text-500 font-medium mb-2">Apellidos</div>
+        <div class="text-900">{{ student?.lastName }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Correo</div>
+        <div class="text-900">{{ student?.user?.email }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Genero</div>
+        <div class="text-900">{{ student?.gender }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Fecha de nacimiento</div>
+        <div class="text-900">{{ student?.birthdate | date }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Dirección</div>
+        <div class="text-900">{{ student?.address }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Número de telefono</div>
+        <div class="text-900">{{ student?.phoneNumber }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Código de estudiante</div>
+        <div class="text-900">{{ student?.studentCode }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Semestre actual</div>
+        <div class="text-900">{{ student?.currentSemester }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Departamento de residencia</div>
+        <div class="text-900">{{ student?.residenceDepartament?.name | capitalizeSentences }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Municipio de residencia</div>
+        <div class="text-900">{{ student?.residenceMunicipality?.name | capitalizeSentences }}</div>
+    </div>
+
+
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Compañia prestadora de salud</div>
+        <div class="text-900">{{ student?.healthCareCompanyEnrollment?.healthCareCompany?.name | capitalizeSentences }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Fecha de afiliación</div>
+        <div class="text-900">{{ student?.healthCareCompanyEnrollment?.affiliationDate | date }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Documento de Identidad</div>
+        <div class="text-900">{{ student?.identityDocument?.documentNumber }}</div>
+    </div>
+    <div class="col-12 md:col-6 p-3">
+        <div class="text-500 font-medium mb-2">Fecha de expedición</div>
+        <div class="text-900">{{ student?.identityDocument?.issuanceDate | date }}</div>
+    </div>
+</div>
+
+{{ student | json }}
+
+<!-- <div class="bg-white grid align-items-center gap-4 border-round p-4 mb-4 border-1 surface-border">
     
     <div class="col-12 md:col-2 flex justify-content-center">
         <img [src]="student?.pictureFile"
              class="h-8rem w-8rem col-12 md:col-6 border-circle"
         >
     </div>
+
+    {{
+        student | json
+    }}
 
     <div class="grid col-12 md:col-9">
         <div class="col-12 md:col-6 p-3">
@@ -32,19 +109,6 @@
 </div>
 
 <div class="p-fluid flex flex-column lg:flex-row">
-    
-    <nav>
-        <ul class="list-none m-0 p-0 flex flex-row lg:flex-column justify-content-evenly 
-                   md:justify-content-between lg:justify-content-start mb-5 lg:pr-8 lg:mb-0">
-            <li>
-                <a *ngFor="let item of items" class="flex align-items-center cursor-pointer p-3 border-round text-800 
-                          hover:surface-hover transition-duration-150 transition-colors no-underline"
-                    [href]="item.link">
-                    {{ item.label }}
-                </a>
-            </li>
-        </ul>
-    </nav>
 
     <div>
         <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
@@ -137,19 +201,6 @@
 
         <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
             <div class="col-12 p-3">
-                <div class="text-500 font-medium mb-2">Lenguages de programacion</div>
-                <p-skeleton *ngIf="student == null"></p-skeleton>
-                <div class="flex flex-wrap gap-3">
-                    <div *ngFor="let programmingLanguage of student?.programmingLanguages"
-                      class="border-round border-1 surface-border px-3 py-2 bg-blue-50">
-                        {{ programmingLanguage.name }}
-                    </div>
-                </div>
-            </div> 
-        </div>
-
-        <div class="bg-white border-round w-full p-4 border-1 surface-border mb-2">
-            <div class="col-12 p-3">
                 <div class="text-500 font-medium">Areas de desarrollo de practicas</div>
 
                 <p-chart type="radar" [data]="dataDevelopmentArea"></p-chart>
@@ -186,3 +237,4 @@
 
     
 </div>
+ -->

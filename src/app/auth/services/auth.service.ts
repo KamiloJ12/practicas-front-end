@@ -63,6 +63,12 @@ export class AuthService {
             );
     }
 
+    checkUserRole(requiredRole: string): boolean {
+        const user = this.currentUser();
+        return !!user && user.role === requiredRole;
+    }
+           
+
     register(email: string, password: string): Observable<boolean> {
         const url = `${this.baseUrl}/auth/signup`;
         const body = { email, password };
@@ -98,6 +104,7 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem('token');
+        localStorage.removeItem('url');
         this._currentUser.set(null);
         this._authStatus.set(AuthStatus.notAuthenticated);
     }
