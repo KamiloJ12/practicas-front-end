@@ -1,7 +1,7 @@
 <div class="h-screen w-screen flex realtive lg:static">
     <div class="lg:block h-screen w-17rem flex-shrink-0 absolute lg:static left-0 top-0 z-1 
-                select-none bg-white px-4 border-300 border-right-1 pt-4 pb-5 fadeinleft "
-                [ngClass]="{'hidden': isMenuVisible}">
+                select-none bg-white px-4 border-300 border-right-1 pt-4 pb-5 transition-delay-500"
+                [ngClass]="{'-translate-x-100': !isMenuVisible}">
         <div class="flex align-items-center justify-content-between">
             <a class="text-2xl text-900 font-bold">
                 Practicas
