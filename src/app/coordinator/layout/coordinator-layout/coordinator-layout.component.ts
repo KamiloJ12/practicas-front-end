@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class CoordinatorLayoutComponent {
 
   private authService = inject( AuthService );
-  public user = computed(() => this.authService.currentUser() );
+  public user = this.authService.currentUser();
 
   public isMenuVisible = false;
   public items = [

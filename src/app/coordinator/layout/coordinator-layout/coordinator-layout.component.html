@@ -1,16 +1,12 @@
 <div class="h-screen w-screen flex realtive lg:static">
     <div class="lg:block h-screen w-17rem flex-shrink-0 absolute lg:static left-0 top-0 z-1 
-                select-none bg-white px-4 border-300 border-right-1 pt-4 pb-5"
+                select-none bg-white px-4 border-300 border-right-1 pt-4 pb-5 fadeinleft "
                 [ngClass]="{'hidden': isMenuVisible}">
         <div class="flex align-items-center justify-content-between">
             <a class="text-2xl text-900 font-bold">
                 Practicas
             </a>
-            <p-button icon="pi pi-times" 
-                      styleClass="lg:hidden" 
-                      severity="secondary" 
-                      [text]="true" 
-                      (click)="toggleMenu()"></p-button>
+            <i class="pi pi-times" (click)="toggleMenu()" classs="text-base text-900"></i>
         </div>
         <nav class="mt-6 list-none">
             <li>
@@ -110,14 +106,10 @@
         <nav class="flex align-items-center justify-content-between
                     border-bottom-1 border-200 px-4" style="height: 4rem;">
             <div>
-                <p-button icon="pi pi-bars" 
-                          styleClass="lg:hidden" 
-                          severity="secondary" 
-                          [text]="true"
-                          (click)="toggleMenu()"></p-button>
+                <i class="pi pi-bars" (click)="toggleMenu()" classs="text-base text-900"></i>
                 <app-search-box placeholder="Buscar..." class="hidden lg:block w-26rem"></app-search-box>
             </div>
-            <p-avatar [label]="'A'" styleClass="mr-2 cursor-pointer" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar>
+            <p-avatar [label]="user?.email?.[0]?.toUpperCase() ?? 'A'" styleClass="mr-2 cursor-pointer" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar>
         </nav>
         <main class="overflow-y-auto h-full px-5 pt-4">
             <router-outlet></router-outlet>
