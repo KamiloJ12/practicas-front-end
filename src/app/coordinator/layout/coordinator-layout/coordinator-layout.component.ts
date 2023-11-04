@@ -11,7 +11,8 @@ export class CoordinatorLayoutComponent {
   private authService = inject( AuthService );
   public user = computed(() => this.authService.currentUser() );
 
-  items = [
+  public isMenuVisible = false;
+  public items = [
     {    
       label: 'Cerrar sesion',
       icon: 'pi pi-refresh',
@@ -20,6 +21,10 @@ export class CoordinatorLayoutComponent {
       },
     },
   ];
+
+  toggleMenu() {
+    this.isMenuVisible = !this.isMenuVisible;
+  }
 
   logout() {
     this.authService.logout();
