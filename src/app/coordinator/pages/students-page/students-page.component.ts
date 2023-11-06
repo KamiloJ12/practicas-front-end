@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentsService } from 'src/app/student/services/students.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-students-page',
@@ -13,11 +13,16 @@ export class StudentsPageComponent {
   public visibleModalDialog: boolean = false;
 
   private studentsService = inject( StudentsService );
-  private userService = inject( UserService );
+  private router = inject( Router );
 
   public ngOnInit(): void {
-    this.studentsService.getStudents()
-      .subscribe( students => this.students = students );
+    if( this.router.url.includes('practices') ) {
+      this.studentsService.getStudentsInPractices()
+        .subscribe( students => this.students = students );
+    } else {
+      this.studentsService.getStudents()
+        .subscribe( students => this.students = students );
+    }
   }
 
   public showModalDialog(): void {
@@ -26,9 +31,5 @@ export class StudentsPageComponent {
 
   public addStudents(file: File): void {
     console.log(file.name);
-    this.userService.addStudents(file)
-      .subscribe({
-        error: (error) => console.log(error)
-      });
   }
 }

@@ -12,7 +12,8 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'register',
+      { 
+        path: 'register',
         component: StudentLayoutComponent,
         children: [
           { path: 'new-basic-information', component: RegisterBasicInformationComponent },
@@ -22,8 +23,9 @@ const routes: Routes = [
           { path: 'new-development-area', component: RegisterDevelopmentAreasComponent },
           { path: '**', redirectTo: 'new-basic-information' }
         ] 
-      }
-    ]
+      },
+      { path: '**', redirectTo: 'register' },
+    ],
   }
 ];
 

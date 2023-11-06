@@ -2,6 +2,6 @@
     <app-logo class="mr-0 lg:mr-6 align-self-center"></app-logo>
     <div>
         <p-menu #menu [model]="items" [popup]="true"></p-menu>
-        <p-button [label]="currrentUser?.email" (click)="menu.toggle($event)" icon="pi pi-user" severity="secondary" [outlined]="true" ></p-button>
+        <p-avatar [label]="currrentUser?.email?.[0]?.toUpperCase() ?? 'A'" (click)="menu.toggle($event)" styleClass="mr-2 cursor-pointer" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar>
     </div>
 </nav>

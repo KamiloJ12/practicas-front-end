@@ -18,8 +18,6 @@ export class NavbarComponent {
   public currrentUser = this.authService.currentUser();
   
   ngOnInit() {
-
-    
     this.items = [
         {
           label: 'Cerrar sesión',

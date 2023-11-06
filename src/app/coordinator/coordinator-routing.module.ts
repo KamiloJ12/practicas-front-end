@@ -10,7 +10,13 @@ const routes: Routes = [
     path: '',
     component: CoordinatorLayoutComponent,
     children: [
-        { path: 'students', component: StudentsPageComponent },
+        { path: 'students', 
+          children: [
+            { path: 'all', component: StudentsPageComponent },
+            { path: 'practices', component: StudentsPageComponent },
+            { path: '**', redirectTo: 'all' }
+          ]
+        },
         { path: 'student/:id', component: StudentPageComponent },
         { path: '**', redirectTo: 'students' },
     ]

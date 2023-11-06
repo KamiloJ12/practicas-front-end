@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { StudentsService } from '../../../student/services/students.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-student-page',
@@ -9,42 +11,15 @@ import { StudentsService } from '../../../student/services/students.service';
 export class StudentPageComponent implements OnInit {
 
   private studentsService = inject( StudentsService );
-  
+  private activatedRoute = inject( ActivatedRoute );
   public student: any = null;
-  items = [
-    {
-      label: 'Datos personales',
-      link: '/personal-information',
-      routerLinkActive: '',
-    },
-    {
-      label: 'Documento de identidad',
-      link: '#documento',
-      routerLinkActive: '',
-    },
-    {
-      label: 'Informacion academica',
-      link: '/academic-information',
-      routerLinkActive: '',
-    },
-    {
-      label: 'Informacion medica',
-      link: '/medical-information',
-      routerLinkActive: '',
-    },
-    {
-      label: 'Areas de desarrollo de practicas',
-      link: '/development-area',
-      routerLinkActive: '',
-    }
-  ];  
 
   public ngOnInit(): void {
-    this.studentsService.getUstudenById(13)
-      .subscribe( student => {
-        this.student = student;
-        console.log( student ); 
-      });
+    this.activatedRoute.params
+        .pipe(
+          switchMap( ({id}) => this.studentsService.getUstudenById( id ) )
+        )
+        .subscribe( student => this.student = student );
   }
 
   public get dataDevelopmentArea() {

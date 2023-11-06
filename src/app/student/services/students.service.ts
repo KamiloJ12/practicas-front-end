@@ -34,6 +34,11 @@ export class StudentsService {
     return this.http.get<any[]>(url, this.commonOptions);
   }
 
+  public getStudentsInPractices(): Observable<any[]> {
+    const url = `${this.baseUrl}/practices`;
+    return this.http.get<any[]>(url, this.commonOptions);
+  }
+
   public getUstudenById(id: number) {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<any>(url, this.commonOptions);

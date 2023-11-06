@@ -1,5 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-coordinator-layout',
@@ -8,25 +7,4 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class CoordinatorLayoutComponent {
 
-  private authService = inject( AuthService );
-  public user = this.authService.currentUser();
-
-  public isMenuVisible = false;
-  public items = [
-    {    
-      label: 'Cerrar sesion',
-      icon: 'pi pi-refresh',
-      command: () => {
-        this.logout();
-      },
-    },
-  ];
-
-  toggleMenu() {
-    this.isMenuVisible = !this.isMenuVisible;
-  }
-
-  logout() {
-    this.authService.logout();
-  }
 }

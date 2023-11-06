@@ -1,12 +1,13 @@
 <div class="h-screen w-screen flex realtive lg:static">
     <div class="lg:block h-screen w-17rem flex-shrink-0 absolute lg:static left-0 top-0 z-1 
-                select-none bg-white px-4 border-300 border-right-1 pt-4 pb-5 transition-delay-500"
-                [ngClass]="{'-translate-x-100': !isMenuVisible}">
+                select-none bg-white px-4 border-300 border-right-1 pt-4 pb-5">
         <div class="flex align-items-center justify-content-between">
             <a class="text-2xl text-900 font-bold">
                 Practicas
             </a>
-            <i class="pi pi-times" (click)="toggleMenu()" classs="text-base text-900"></i>
+            <a class="lg:hidden">
+                <i class="pi pi-times" classs="text-base text-900"></i>
+            </a>
         </div>
         <nav class="mt-6 list-none">
             <li>
@@ -17,7 +18,7 @@
                         <a class="flex justify-content-between gap-1
                             py-1 pr-2 text-sm pl-3 text-800 border-left-2
                             border-100 line-height-3 cursor-pointer select-none no-underline"
-                            routerLink="/coordinator/students"
+                            routerLink="/coordinator/students/practices"
                             routerLinkActive="border-red-600 border-left-3">
                             En practica
                         </a>
@@ -25,7 +26,9 @@
                     <li>
                         <a class="flex justify-content-between gap-1
                             py-1 pr-2 text-sm pl-3 text-800 border-left-2 
-                            border-100 line-height-3 cursor-pointer select-none">
+                            border-100 line-height-3 cursor-pointer select-none no-underline"
+                            routerLink="/coordinator/students/all"
+                            routerLinkActive="border-red-600 border-left-3">
                             Todos
                         </a>
                     </li>
@@ -103,17 +106,9 @@
         </nav>
     </div>
     <div class="h-screen flex flex-column realtive flex-auto">
-        <nav class="flex align-items-center justify-content-between
-                    border-bottom-1 border-200 px-4" style="height: 4rem;">
-            <div>
-                <i class="pi pi-bars" (click)="toggleMenu()" classs="text-base text-900"></i>
-                <app-search-box placeholder="Buscar..." class="hidden lg:block w-26rem"></app-search-box>
-            </div>
-            <p-avatar [label]="user?.email?.[0]?.toUpperCase() ?? 'A'" styleClass="mr-2 cursor-pointer" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar>
-        </nav>
+        <app-navbar></app-navbar>
         <main class="overflow-y-auto h-full px-5 pt-4">
             <router-outlet></router-outlet>
         </main>
     </div>
 </div>
-
