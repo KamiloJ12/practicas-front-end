@@ -15,15 +15,17 @@ import { ValidatorsService } from '../../../shared/services/validators.service';
 export class RegisterPageComponent {
 
   private fb = inject( FormBuilder );
-  private authService = inject( AuthService );
   private router = inject( Router );
+
+  private authService = inject( AuthService );
   private messageService = inject( MessageService );
   private validatorsService = inject( ValidatorsService );
 
   public registerForm: FormGroup = this.fb.group({
     email: ['', [ Validators.required, Validators.pattern( this.validatorsService.emailPattern ) ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
-    password2: ['', [ Validators.required ]]
+    password2: ['', [ Validators.required ]],
+    role: [null, [ Validators.required ]]
   }, {
     validators: [
       this.validatorsService.isFieldOneEqualFieldTwo('password','password2')
@@ -34,7 +36,7 @@ export class RegisterPageComponent {
     return this.validatorsService.isValidField( this.registerForm, field );
   }
 
-  public login(): void {
+  public submit(): void {
     if( !this.registerForm.valid ) 
       return this.registerForm.markAllAsTouched();
 

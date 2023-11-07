@@ -11,5 +11,11 @@ export const roleGuard: CanActivateFn = (route, state) => {
   if( authService.checkUserRole(requiredRole) ){
     return true;
   }
+  /* const url = localStorage.getItem('url');
+  if(url) {
+    router.navigateByUrl(url);
+  } else {
+    router.navigateByUrl('auth/login');
+  } */
   return false;
 };

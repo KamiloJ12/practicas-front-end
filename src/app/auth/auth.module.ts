@@ -11,6 +11,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ResetPasswordPageComponent } from './pages/reset-password-page/reset-password-page.component';
 import { RequestResetPasswordPageComponent } from './pages/request-reset-password-page/request-reset-password-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginPageComponent,
     ResetPasswordPageComponent,
     RequestResetPasswordPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    AuthLayoutComponent
   ],
   imports: [
     CommonModule,

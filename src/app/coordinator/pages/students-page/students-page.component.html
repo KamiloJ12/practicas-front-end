@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 
 <h2 class="text-2xl font-bold text-900 mb-5">Estudiantes</h2>
 
@@ -74,7 +75,14 @@
 
 
 <p-dialog header="Agregar Estudiantes" [(visible)]="visibleModalDialog" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-    <div class="p-5">
-        <app-file-input [acceptedFileTypes]="'csv'" (documentFileChange)="addStudents($event)"></app-file-input>
+    <div class="px-5 pt-5 pb-3">
+        <form (submit)="onFileSelected($event)">
+            <app-file-input [acceptedFileTypes]="'csv'" 
+                            [documentFile]="selectedFile"
+                            (documentFileChange)="onFileChange($event)"></app-file-input>
+            <div class="flex justify-content-end align-items-center">
+                <p-button type="submit" icon="pi pi-plus" label="Agregar" [outlined]="true" severity="secondary" size="small"></p-button>
+            </div>
+        </form>
     </div>
 </p-dialog>

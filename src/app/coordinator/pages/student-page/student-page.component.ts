@@ -21,18 +21,4 @@ export class StudentPageComponent implements OnInit {
         )
         .subscribe( student => this.student = student );
   }
-
-  public get dataDevelopmentArea() {
-    if( !this.student?.developmentArea ) return;
-    
-    const data = {
-      labels: Object.keys(this.student?.developmentArea),
-      datasets: [
-        {
-          data: Object.values(this.student?.developmentArea)
-        }
-      ]
-    }
-    return data;
-  }
 }
